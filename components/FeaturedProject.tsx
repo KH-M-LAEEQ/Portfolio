@@ -4,7 +4,7 @@ import type { Project } from "@/data/cv";
 
 export default function FeaturedProject({ project }: { project: Project }) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-accent/30 bg-surface shadow-md">
+    <div className="relative overflow-hidden rounded-xl border border-accent/30 bg-surface shadow-md transition-shadow duration-300 hover:shadow-[0_12px_40px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
       <div className="grid gap-0 md:grid-cols-2">
         <div className="flex flex-col justify-center p-6 md:p-10">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-accent">

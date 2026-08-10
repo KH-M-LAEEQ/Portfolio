@@ -7,8 +7,12 @@ import { profile } from "@/data/cv";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="scroll-mt-20 bg-surface-2/50">
-      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <footer id="contact" className="relative scroll-mt-20 overflow-hidden bg-surface-2/50">
+      <div
+        aria-hidden
+        className="animate-blob-breathe pointer-events-none absolute left-1/2 top-0 h-[380px] w-[640px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--accent)_8%,transparent),transparent)]"
+      />
+      <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
         <Reveal>
           <SectionHeading eyebrow="Let's work together" title="Contact" />
         </Reveal>

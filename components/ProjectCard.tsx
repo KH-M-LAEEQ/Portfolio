@@ -5,7 +5,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const isDeployed = project.status === "Completed · Deployed";
 
   return (
-    <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-md">
+    <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--accent)_18%,transparent)]">
       <div className="mb-3 flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-foreground">{project.name}</h3>
         <span
