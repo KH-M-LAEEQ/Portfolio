@@ -39,6 +39,7 @@ export type Project = {
   status: ProjectStatus;
   featured?: boolean;
   liveUrl?: string;
+  image?: string;
   description: string;
   tags: string[];
   links: ProjectLink[];
@@ -51,6 +52,7 @@ export const projects: Project[] = [
     status: "Completed · Deployed",
     featured: true,
     liveUrl: "https://www.grantpilot.works",
+    image: "/projects/grantpilot-dashboard.png",
     description:
       "An AI-powered platform that matches students with relevant scholarships based on academic profiles and eligibility criteria. Backend services handle scholarship ingestion, filtering, recommendation, and LLM-powered opportunity discovery.",
     tags: ["AI/LLM", "Recommendation Engine", "Backend", "REST APIs"],
@@ -136,11 +138,25 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   { category: "Languages", skills: ["Python", "JavaScript", "Java", "C++", "C"] },
-  { category: "Frontend", skills: ["HTML", "CSS", "JavaScript", "React"] },
-  { category: "Mobile", skills: ["Flutter"] },
+  { category: "Frontend", skills: ["HTML", "CSS", "JavaScript", "React", "Next.js"] },
+  { category: "Mobile", skills: ["Flutter", "Dart", "XML", "Android SDK"] },
   { category: "Backend", skills: ["Django", "FastAPI", "REST APIs", "Firebase"] },
+  { category: "Auth", skills: ["Firebase Authentication", "Google OAuth", "JWT"] },
   { category: "Databases", skills: ["MySQL", "PostgreSQL", "Firestore"] },
-  { category: "Cloud & Tools", skills: ["AWS EC2", "Git", "GitHub", "Docker", "Postman"] },
+  {
+    category: "Cloud & Tools",
+    skills: [
+      "AWS EC2",
+      "AWS EKS",
+      "AWS DynamoDB",
+      "AWS S3",
+      "AWS CloudWatch",
+      "Git",
+      "GitHub",
+      "Docker",
+      "Postman",
+    ],
+  },
   { category: "AI", skills: ["LLM Applications", "Agentic AI", "MCP"] },
 ];
 

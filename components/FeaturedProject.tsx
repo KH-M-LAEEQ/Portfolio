@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/data/cv";
 
@@ -61,27 +62,49 @@ export default function FeaturedProject({ project }: { project: Project }) {
 
         <div className="relative flex items-center justify-center border-t border-border bg-surface-2 p-6 md:border-l md:border-t-0 md:p-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in_srgb,var(--accent)_10%,transparent),transparent_60%)]" />
-          <div className="relative w-full max-w-sm overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
-            <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-3 py-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-              <span className="ml-2 truncate rounded bg-surface px-2 py-0.5 text-[11px] text-muted">
-                www.grantpilot.works
-              </span>
-            </div>
-            <div className="space-y-3 p-4">
-              <div className="h-3 w-2/3 rounded bg-surface-2" />
-              <div className="grid grid-cols-3 gap-2">
-                <div className="h-14 rounded bg-surface-2" />
-                <div className="h-14 rounded border border-accent/30 bg-accent/5" />
-                <div className="h-14 rounded bg-surface-2" />
+          {project.image ? (
+            <div className="relative w-full max-w-sm overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
+              <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-3 py-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+                <span className="ml-2 truncate rounded bg-surface px-2 py-0.5 text-[11px] text-muted">
+                  www.grantpilot.works
+                </span>
               </div>
-              <div className="h-2 w-full rounded bg-surface-2" />
-              <div className="h-2 w-5/6 rounded bg-surface-2" />
-              <div className="h-2 w-3/4 rounded bg-surface-2" />
+              <div className="relative aspect-video w-full">
+                <Image
+                  src={project.image}
+                  alt={`${project.name} screenshot`}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(min-width: 768px) 24rem, 100vw"
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="relative w-full max-w-sm overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
+              <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-3 py-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+                <span className="ml-2 truncate rounded bg-surface px-2 py-0.5 text-[11px] text-muted">
+                  www.grantpilot.works
+                </span>
+              </div>
+              <div className="space-y-3 p-4">
+                <div className="h-3 w-2/3 rounded bg-surface-2" />
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="h-14 rounded bg-surface-2" />
+                  <div className="h-14 rounded border border-accent/30 bg-accent/5" />
+                  <div className="h-14 rounded bg-surface-2" />
+                </div>
+                <div className="h-2 w-full rounded bg-surface-2" />
+                <div className="h-2 w-5/6 rounded bg-surface-2" />
+                <div className="h-2 w-3/4 rounded bg-surface-2" />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
