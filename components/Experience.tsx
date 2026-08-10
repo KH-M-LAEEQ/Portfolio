@@ -10,9 +10,12 @@ export default function Experience() {
           <SectionHeading eyebrow="Where I've worked & studied" title="Experience & Education" />
         </Reveal>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-muted">
+            Experience
+          </p>
           <Reveal delay={80}>
-            <div className="h-full rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div className="rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
               <p className="text-xs font-medium uppercase tracking-wide text-muted">
                 {experience.period}
               </p>
@@ -25,18 +28,27 @@ export default function Experience() {
               </p>
             </div>
           </Reveal>
+        </div>
 
-          <Reveal delay={160}>
-            <div className="h-full rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
-              <p className="text-xs font-medium uppercase tracking-wide text-muted">
-                {education.period}
-              </p>
-              <h3 className="mt-1 text-lg font-semibold text-foreground">
-                {education.degree}
-              </h3>
-              <p className="text-sm font-medium text-accent">{education.school}</p>
-            </div>
-          </Reveal>
+        <div className="mt-10">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-muted">
+            Education
+          </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            {education.map((edu, i) => (
+              <Reveal key={edu.school} delay={Math.min(80 + i * 80, 240)}>
+                <div className="h-full rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
+                  <p className="text-xs font-medium uppercase tracking-wide text-muted">
+                    {edu.period}
+                  </p>
+                  <h3 className="mt-1 text-lg font-semibold text-foreground">
+                    {edu.degree}
+                  </h3>
+                  <p className="text-sm font-medium text-accent">{edu.school}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

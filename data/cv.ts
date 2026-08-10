@@ -12,18 +12,31 @@ export const profile = {
     "Computer Science student at the University of Central Punjab (UCP) with hands-on experience in full-stack development, mobile applications, databases, cloud technologies, and AI-powered systems. Completed a Software Engineering Internship at Arbisoft and built projects involving web applications, REST APIs, cloud infrastructure, and AI-driven workflows. Passionate about building scalable software and continuously learning modern technologies.",
 };
 
-export const education = {
-  school: "University of Central Punjab (UCP), Lahore",
-  degree: "Bachelor of Science in Computer Science",
-  period: "2023 – 2027",
+export type Education = {
+  school: string;
+  degree: string;
+  period: string;
 };
+
+export const education: Education[] = [
+  {
+    school: "University of Central Punjab (UCP), Lahore",
+    degree: "BSCS — Bachelor of Science in Computer Science",
+    period: "2023 – 2027",
+  },
+  {
+    school: "Forman Christian College, Lahore",
+    degree: "FSC — Intermediate",
+    period: "2021 – 2023",
+  },
+];
 
 export const experience = {
   company: "Arbisoft",
   role: "Software Engineering Intern",
   period: "June 2026 – July 2026",
   description:
-    "Worked on full-stack web development concepts including frontend, backend, REST APIs, authentication systems, testing practices, and AI-assisted development workflows. Gained exposure to Agentic AI concepts, MCP, tools, memory systems, and modern software engineering methodologies.",
+    "Built full-stack web applications using Django and React, working across frontend, backend, REST APIs, authentication systems, and testing practices. Learned about MCP, embeddings, and LLMs, and applied that knowledge to integrate LLMs into applications and build agentic workflows.",
 };
 
 export type ProjectStatus = "Completed" | "Completed · Deployed";
