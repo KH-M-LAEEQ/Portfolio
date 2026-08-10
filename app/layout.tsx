@@ -13,9 +13,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Khawaja Muhammad Laeeq — Full-Stack & AI Developer",
+  metadataBase: new URL("https://khawajalaeeq.me"),
+
+  title: {
+    default: "Khawaja Muhammad Laeeq | Full-Stack & AI Developer",
+    template: "%s | Khawaja Muhammad Laeeq",
+  },
+
   description:
-    "Portfolio of Khawaja Muhammad Laeeq — Computer Science student and full-stack developer building web, mobile, and AI-powered applications.",
+    "Portfolio of Khawaja Muhammad Laeeq, a Computer Science student and Full-Stack & AI Developer building web, mobile, and AI-powered applications with Python, Django, React, Next.js, Flutter, and Java.",
+
+  authors: [
+    {
+      name: "Khawaja Muhammad Laeeq",
+    },
+  ],
+
+  creator: "Khawaja Muhammad Laeeq",
+
+  alternates: {
+    canonical: "https://khawajalaeeq.me",
+  },
+
+  openGraph: {
+    type: "website",
+    url: "https://khawajalaeeq.me",
+    title: "Khawaja Muhammad Laeeq | Full-Stack & AI Developer",
+    description:
+      "Portfolio of Khawaja Muhammad Laeeq — Full-Stack & AI Developer building web, mobile, and AI-powered applications.",
+    siteName: "Khawaja Muhammad Laeeq",
+    locale: "en_US",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
