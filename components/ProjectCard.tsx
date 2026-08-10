@@ -32,7 +32,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-md bg-surface-2 px-2 py-1 text-xs font-medium text-muted"
+            className="rounded-md bg-surface-2 px-2 py-1 font-mono text-xs font-medium text-muted"
           >
             {tag}
           </span>

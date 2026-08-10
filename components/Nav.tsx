@@ -42,8 +42,10 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-semibold text-foreground">
+        <a href="#top" className="font-mono font-semibold text-foreground">
+          <span className="text-accent-2">&lt;</span>
           Khawaja Laeeq
+          <span className="text-accent-2">/&gt;</span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">

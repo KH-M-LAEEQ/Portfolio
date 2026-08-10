@@ -16,7 +16,7 @@ export default function Experience() {
           </p>
           <Reveal delay={80}>
             <div className="rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
-              <p className="text-xs font-medium uppercase tracking-wide text-muted">
+              <p className="font-mono text-xs font-medium uppercase tracking-wide text-muted">
                 {experience.period}
               </p>
               <h3 className="mt-1 text-lg font-semibold text-foreground">
@@ -38,7 +38,7 @@ export default function Experience() {
             {education.map((edu, i) => (
               <Reveal key={edu.school} delay={Math.min(80 + i * 80, 240)}>
                 <div className="h-full rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
-                  <p className="text-xs font-medium uppercase tracking-wide text-muted">
+                  <p className="font-mono text-xs font-medium uppercase tracking-wide text-muted">
                     {edu.period}
                   </p>
                   <h3 className="mt-1 text-lg font-semibold text-foreground">

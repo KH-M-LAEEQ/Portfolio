@@ -26,7 +26,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-surface-2 px-2 py-1 text-xs font-medium text-muted"
+                className="rounded-md bg-surface-2 px-2 py-1 font-mono text-xs font-medium text-muted"
               >
                 {tag}
               </span>
@@ -63,7 +63,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
         <div className="relative flex items-center justify-center border-t border-border bg-surface-2 p-6 md:border-l md:border-t-0 md:p-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in_srgb,var(--accent)_10%,transparent),transparent_60%)]" />
           {project.image ? (
-            <div className="relative w-full max-w-sm overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
+            <div className="hud-frame relative w-full max-w-sm overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
               <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-3 py-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />

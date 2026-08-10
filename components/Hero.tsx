@@ -26,21 +26,25 @@ export default function Hero() {
         style={{ animationDelay: "2s" }}
       />
       <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs font-medium text-accent">
+        <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 font-mono text-xs font-medium text-accent">
           <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
-          Available for internships &amp; collaborations
+          <span className="text-accent-2">$</span> status --available-for-work
         </div>
 
         <div
           className="animate-fade-in-up flex flex-col items-start gap-8 md:flex-row md:items-center"
           style={{ animationDelay: "120ms" }}
         >
-          <div className="flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-accent-2 text-3xl font-bold text-white shadow-lg shadow-accent/20 md:h-28 md:w-28 md:text-4xl">
+          <div className="hud-frame flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-accent-2 text-3xl font-bold text-white shadow-lg shadow-accent/20 md:h-28 md:w-28 md:text-4xl">
             {initials(profile.name)}
           </div>
 
           <div>
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+            <p className="font-mono text-xs text-muted">
+              <span className="text-accent-2">~</span>/portfolio
+              <span className="animate-caret-blink text-accent-2">_</span>
+            </p>
+            <h1 className="mt-1 text-4xl font-bold tracking-tight md:text-5xl">
               <TypewriterName text={profile.name} />
             </h1>
             <p className="mt-3 text-lg font-medium text-accent md:text-xl">

@@ -20,7 +20,7 @@ export default function Certifications() {
                     : "border-border/60 bg-surface-2/60"
                 }`}
               >
-                <span className="mt-0.5 text-sm font-semibold text-accent">
+                <span className="mt-0.5 font-mono text-sm font-semibold text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="min-w-0 flex-1">
