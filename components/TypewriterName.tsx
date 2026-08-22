@@ -65,8 +65,8 @@ export default function TypewriterName({ text }: { text: string }) {
       </span>
       <span
         aria-hidden="true"
-        className={`ml-0.5 inline-block h-[0.85em] w-[2px] translate-y-[0.08em] bg-accent align-middle ${
-          typing ? "opacity-100" : "animate-caret-blink"
+        className={`ml-0.5 inline-block h-[0.85em] w-[2px] translate-y-[0.08em] bg-accent align-middle transition-opacity duration-500 ${
+          typing ? "opacity-100" : "opacity-0"
         }`}
       />
     </span>

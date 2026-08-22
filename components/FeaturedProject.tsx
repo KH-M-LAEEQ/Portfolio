@@ -39,7 +39,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 rounded-md bg-accent px-4 py-2 font-medium text-white transition-transform hover:-translate-y-0.5 hover:opacity-90"
+                className="flex items-center gap-1.5 rounded-md bg-accent px-4 py-2 font-medium text-white transition-transform hover:-translate-y-0.5 hover:bg-accent-hover"
               >
                 Visit Live Site
                 <ArrowUpRight size={15} />

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Loader2, Send } from "lucide-react";
+import { profile } from "@/data/cv";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xljrjplp";
 
@@ -72,6 +73,19 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-4">
+        <label htmlFor="subject" className={labelClass}>
+          Subject
+        </label>
+        <input
+          id="subject"
+          name="_subject"
+          type="text"
+          placeholder="What's this about?"
+          className={fieldClass}
+        />
+      </div>
+
+      <div className="mt-4">
         <label htmlFor="message" className={labelClass}>
           Message
         </label>
@@ -89,7 +103,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="btn-shine flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? (
             <>
@@ -99,22 +113,27 @@ export default function ContactForm() {
           ) : (
             <>
               <Send size={16} />
-              Send Message
+              Send message
             </>
           )}
         </button>
-
-        {status === "success" && (
-          <p className="text-sm font-medium text-accent">
-            Message sent — thanks for reaching out.
-          </p>
-        )}
-        {status === "error" && (
-          <p className="text-sm font-medium text-red-600">
-            Something went wrong. Try emailing me directly instead.
-          </p>
-        )}
       </div>
+
+      {status === "success" && (
+        <p className="mt-3 text-sm font-medium text-accent">
+          Message sent — thanks for reaching out.
+        </p>
+      )}
+      {status === "error" && (
+        <p className="mt-3 text-sm font-medium text-red-500">
+          Something went wrong. Try emailing me directly instead.
+        </p>
+      )}
+      {status === "idle" && (
+        <p className="mt-3 text-xs text-muted">
+          Sends directly to {profile.email} — no email app required.
+        </p>
+      )}
     </form>
   );
 }

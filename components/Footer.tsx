@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
@@ -18,48 +18,81 @@ export default function Footer() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="rounded-xl border border-border bg-surface p-6 shadow-sm md:p-8">
-            <p className="mb-6 text-foreground/80">
-              Open to internships, collaborations, and interesting problems —
-              send a message directly:
-            </p>
+          <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+            <div className="flex flex-col gap-6">
+              <a href={`mailto:${profile.email}`} className="flex items-start gap-3">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  <Mail size={18} />
+                </span>
+                <span>
+                  <span className="block text-xs text-muted">Email</span>
+                  <span className="block text-sm font-semibold text-foreground">
+                    {profile.email}
+                  </span>
+                </span>
+              </a>
+              <a
+                href={`tel:${profile.phone.replace(/[^+\d]/g, "")}`}
+                className="flex items-start gap-3"
+              >
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  <Phone size={18} />
+                </span>
+                <span>
+                  <span className="block text-xs text-muted">Phone</span>
+                  <span className="block text-sm font-semibold text-foreground">
+                    {profile.phone}
+                  </span>
+                </span>
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3"
+              >
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  <LinkedinIcon width={18} height={18} />
+                </span>
+                <span>
+                  <span className="block text-xs text-muted">LinkedIn</span>
+                  <span className="block text-sm font-semibold text-foreground">
+                    {profile.linkedinHandle.replace("linkedin.com", "")}
+                  </span>
+                </span>
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3"
+              >
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  <GithubIcon width={18} height={18} />
+                </span>
+                <span>
+                  <span className="block text-xs text-muted">GitHub</span>
+                  <span className="block text-sm font-semibold text-foreground">
+                    {profile.githubHandle.replace("github.com", "")}
+                  </span>
+                </span>
+              </a>
+              <div className="flex items-start gap-3">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  <MapPin size={18} />
+                </span>
+                <span>
+                  <span className="block text-xs text-muted">Location</span>
+                  <span className="block text-sm font-semibold text-foreground">
+                    {profile.location} — open to remote
+                  </span>
+                </span>
+              </div>
+            </div>
+
             <ContactForm />
           </div>
         </Reveal>
-
-        <Reveal delay={160}>
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-            <a
-              href={`mailto:${profile.email}`}
-              className="flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2 font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              <Mail size={16} />
-              {profile.email}
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2 font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              <GithubIcon width={16} height={16} />
-              {profile.githubHandle}
-            </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2 font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              <LinkedinIcon width={16} height={16} />
-              {profile.linkedinHandle}
-            </a>
-          </div>
-        </Reveal>
-
-        <p className="mt-8 text-center text-xs text-muted">
-          {profile.name} · built with Next.js &amp; Tailwind
-        </p>
       </div>
     </footer>
   );

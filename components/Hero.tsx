@@ -1,7 +1,8 @@
-import { Download, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { profile } from "@/data/cv";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import TypewriterName from "@/components/TypewriterName";
+import ResumePreview from "@/components/ResumePreview";
 
 function initials(name: string) {
   return name
@@ -26,9 +27,9 @@ export default function Hero() {
         style={{ animationDelay: "2s" }}
       />
       <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 font-mono text-xs font-medium text-accent">
+        <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs font-medium text-accent">
           <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
-          <span className="text-accent-2">$</span> status --available-for-work
+          Available for work
         </div>
 
         <div
@@ -40,11 +41,7 @@ export default function Hero() {
           </div>
 
           <div>
-            <p className="font-mono text-xs text-muted">
-              <span className="text-accent-2">~</span>/portfolio
-              <span className="animate-caret-blink text-accent-2">_</span>
-            </p>
-            <h1 className="mt-1 text-4xl font-bold tracking-tight md:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
               <TypewriterName text={profile.name} />
             </h1>
             <p className="mt-3 text-lg font-medium text-accent md:text-xl">
@@ -95,18 +92,11 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="btn-shine rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-md"
           >
             View Projects
           </a>
-          <a
-            href="/resume.pdf"
-            download
-            className="flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-          >
-            <Download size={16} />
-            Download CV
-          </a>
+          <ResumePreview />
           <a
             href="#contact"
             className="flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"

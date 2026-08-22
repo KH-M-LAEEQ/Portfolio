@@ -13,13 +13,7 @@ export default function Certifications() {
         <ol className="grid gap-3 md:grid-cols-2">
           {certifications.map((cert, i) => {
             const content = (
-              <div
-                className={`flex items-start gap-3 rounded-xl border px-4 py-3 transition-all ${
-                  cert.fileUrl
-                    ? "border-border bg-surface shadow-sm hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-md"
-                    : "border-border/60 bg-surface-2/60"
-                }`}
-              >
+              <div className="flex items-start gap-3 rounded-xl border border-border bg-surface px-4 py-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-md">
                 <span className="mt-0.5 font-mono text-sm font-semibold text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>

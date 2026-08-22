@@ -46,7 +46,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 font-medium text-white transition-opacity hover:opacity-90"
+              className="flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 font-medium text-white transition-colors hover:bg-accent-hover"
             >
               Visit Live Site
               <ArrowUpRight size={14} />

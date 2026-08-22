@@ -1,6 +1,6 @@
 export const profile = {
   name: "Khawaja Muhammad Laeeq",
-  title: "Computer Science Student & Full-Stack Developer",
+  title: "Full-Stack & Agentic AI Developer",
   location: "Lahore, Pakistan",
   phone: "+92 334 8167493",
   email: "khawajalaeeq2@gmail.com",
