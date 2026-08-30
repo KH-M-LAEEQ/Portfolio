@@ -23,14 +23,32 @@ export default function ResumePreview() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
+      <a
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(event) => {
+          // Plain left-click opens the in-page preview. Modified clicks
+          // (new tab, middle-click), keyboard users, and crawlers still get
+          // the real /resume.pdf via the href.
+          if (
+            event.defaultPrevented ||
+            event.button !== 0 ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey
+          ) {
+            return;
+          }
+          event.preventDefault();
+          setOpen(true);
+        }}
         className="flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
       >
         <Eye size={16} />
         Preview CV
-      </button>
+      </a>
 
       {open && (
         <div

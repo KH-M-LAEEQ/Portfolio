@@ -3,6 +3,11 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/data/cv";
 
 export default function FeaturedProject({ project }: { project: Project }) {
+  const previewUrl = project.liveUrl ?? project.links[0]?.href;
+  const previewHost = project.liveUrl
+    ? new URL(project.liveUrl).host
+    : "preview";
+
   return (
     <div className="relative overflow-hidden rounded-xl border border-accent/30 bg-surface shadow-md transition-shadow duration-300 hover:shadow-[0_12px_40px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
       <div className="grid gap-0 md:grid-cols-2">
@@ -63,25 +68,36 @@ export default function FeaturedProject({ project }: { project: Project }) {
         <div className="relative flex items-center justify-center border-t border-border bg-surface-2 p-6 md:border-l md:border-t-0 md:p-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in_srgb,var(--accent)_10%,transparent),transparent_60%)]" />
           {project.image ? (
-            <div className="hud-frame relative w-full max-w-sm overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
+            <a
+              href={previewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${project.name} live site`}
+              className="hud-frame group/preview relative block w-full max-w-md overflow-hidden rounded-lg border border-border bg-surface shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_50px_color-mix(in_srgb,var(--accent)_28%,transparent)]"
+            >
               <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-3 py-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
                 <span className="ml-2 truncate rounded bg-surface px-2 py-0.5 text-[11px] text-muted">
-                  www.grantpilot.works
+                  {previewHost}
                 </span>
               </div>
-              <div className="relative aspect-video w-full">
+              <div className="relative aspect-[1900/867] w-full">
                 <Image
                   src={project.image}
                   alt={`${project.name} screenshot`}
                   fill
-                  className="object-cover object-top"
-                  sizes="(min-width: 768px) 24rem, 100vw"
+                  className="object-cover object-top transition-transform duration-500 group-hover/preview:scale-[1.03]"
+                  sizes="(min-width: 768px) 28rem, 100vw"
+                  priority
                 />
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-gradient-to-t from-black/75 to-transparent px-3 pb-3 pt-8 text-xs font-semibold text-white opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">
+                  Visit live site
+                  <ArrowUpRight size={13} />
+                </span>
               </div>
-            </div>
+            </a>
           ) : (
             <div className="relative w-full max-w-sm overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
               <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-3 py-2">

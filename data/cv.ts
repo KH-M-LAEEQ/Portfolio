@@ -9,7 +9,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/khawaja-laeeq",
   linkedinHandle: "linkedin.com/in/khawaja-laeeq",
   summary:
-    "Computer Science student at the University of Central Punjab (UCP) with hands-on experience in full-stack development, mobile applications, databases, cloud technologies, and AI-powered systems. Completed a Software Engineering Internship at Arbisoft and built projects involving web applications, REST APIs, cloud infrastructure, and AI-driven workflows. Passionate about building scalable software and continuously learning modern technologies.",
+    "Agentic AI and Full-Stack Developer with hands-on experience in full-stack development, mobile applications, databases, cloud technologies, and AI-powered systems. Completed a Software Engineering Internship at Arbisoft and built projects involving web applications, REST APIs, cloud infrastructure, and AI-driven workflows. Passionate about building scalable software and continuously learning modern technologies.",
 };
 
 export type Education = {
@@ -46,11 +46,16 @@ export type ProjectLink = {
   href: string;
 };
 
+// "selected" = independent, portfolio-worthy work; "coursework" = clones and
+// learning exercises, grouped separately so the section reads by judgement.
+export type ProjectGroup = "selected" | "coursework";
+
 export type Project = {
   slug: string;
   name: string;
   status: ProjectStatus;
   featured?: boolean;
+  group?: ProjectGroup;
   liveUrl?: string;
   image?: string;
   description: string;
@@ -65,16 +70,42 @@ export const projects: Project[] = [
     status: "Completed · Deployed",
     featured: true,
     liveUrl: "https://www.grantpilot.works",
-    image: "/projects/grantpilot-dashboard.png",
+    image: "/projects/grantpilot-opportunities.png",
     description:
       "An AI-powered platform that matches students with relevant scholarships based on academic profiles and eligibility criteria. Backend services handle scholarship ingestion, filtering, recommendation, and LLM-powered opportunity discovery.",
     tags: ["AI/LLM", "Recommendation Engine", "Backend", "REST APIs"],
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/GrantPilot" }],
   },
   {
+    slug: "competitive-intelligence-monitor",
+    name: "Competitive Intelligence Monitor",
+    status: "Completed",
+    group: "selected",
+    description:
+      "An agentic-AI-driven web app for e-commerce competitor tracking. Monitors competitor websites, surfaces comparisons and new activity, and gives AI-powered suggestions for improving your own store.",
+    tags: ["FastAPI", "Next.js", "Agentic AI", "Web Scraping"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/KH-M-LAEEQ/Competitive_Intelligence_Monitor",
+      },
+    ],
+  },
+  {
+    slug: "fake-news-detector",
+    name: "Fake News Detector",
+    status: "Completed",
+    group: "coursework",
+    description:
+      "A fake news detection tool built with Python and Flutter, using K-Means clustering and KNN. Paste in a news article and the model classifies it as fake or real.",
+    tags: ["Python", "Flutter", "K-Means", "KNN", "ML"],
+    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fake-News-Detctor" }],
+  },
+  {
     slug: "olx-clone",
     name: "OLX Clone",
     status: "Completed",
+    group: "coursework",
     description:
       "A marketplace application with separate frontend and backend architectures. Implements authentication, product listings, search functionality, CRUD operations, REST APIs, and relational database design.",
     tags: ["Full Stack", "REST APIs", "Auth", "Relational DB"],
@@ -87,6 +118,7 @@ export const projects: Project[] = [
     slug: "pakwheels-clone",
     name: "PakWheels Mobile App Clone",
     status: "Completed",
+    group: "coursework",
     description:
       "A Flutter application featuring vehicle listings, search filters, and detailed vehicle views. UI/UX designed using Figma wireframes with responsive layouts and navigation.",
     tags: ["Flutter", "Dart", "Figma", "Mobile"],
@@ -96,51 +128,31 @@ export const projects: Project[] = [
     slug: "instagram-clone",
     name: "Instagram Clone",
     status: "Completed",
+    group: "coursework",
     description:
       "A social media application with authentication, posts, image uploads, and real-time feeds using Firebase Authentication, Firestore, and Storage.",
     tags: ["Firebase", "Firestore", "Auth", "Real-time"],
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/insta" }],
   },
   {
-    slug: "aws-vpn",
-    name: "AWS VPN Application",
-    status: "Completed",
-    description:
-      "A VPN application built with Flutter and AWS EC2. Configured cloud infrastructure and implemented secure connectivity features.",
-    tags: ["Flutter", "AWS EC2", "Cloud Infra", "Security"],
-    links: [],
-  },
-  {
     slug: "fitness-app",
     name: "Fitness App",
     status: "Completed",
+    group: "selected",
     description:
       "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service.",
     tags: ["Flutter", "Dart", "Firebase", "Mobile"],
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fitness-App" }],
   },
   {
-    slug: "fake-news-detector",
-    name: "Fake News Detector",
+    slug: "aws-vpn",
+    name: "AWS VPN Application",
     status: "Completed",
+    group: "coursework",
     description:
-      "A fake news detection tool built with Python and Flutter, using K-Means clustering and KNN. Paste in a news article and the model classifies it as fake or real.",
-    tags: ["Python", "Flutter", "K-Means", "KNN", "ML"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fake-News-Detctor" }],
-  },
-  {
-    slug: "competitive-intelligence-monitor",
-    name: "Competitive Intelligence Monitor",
-    status: "Completed",
-    description:
-      "An agentic-AI-driven web app for e-commerce competitor tracking. Monitors competitor websites, surfaces comparisons and new activity, and gives AI-powered suggestions for improving your own store.",
-    tags: ["FastAPI", "Next.js", "Agentic AI", "Web Scraping"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/KH-M-LAEEQ/Competitive_Intelligence_Monitor",
-      },
-    ],
+      "A VPN application built with Flutter and AWS EC2. Configured cloud infrastructure and implemented secure connectivity features.",
+    tags: ["Flutter", "AWS EC2", "Cloud Infra", "Security"],
+    links: [],
   },
 ];
 
@@ -154,8 +166,6 @@ export const skillGroups: SkillGroup[] = [
   { category: "Frontend", skills: ["HTML", "CSS", "JavaScript", "React", "Next.js"] },
   { category: "Mobile", skills: ["Flutter", "Dart", "XML", "Android SDK"] },
   { category: "Backend", skills: ["Django", "FastAPI", "REST APIs", "Firebase"] },
-  { category: "Auth", skills: ["Firebase Authentication", "Google OAuth", "JWT"] },
-  { category: "Databases", skills: ["MySQL", "PostgreSQL", "Firestore"] },
   {
     category: "Cloud & Tools",
     skills: [
@@ -223,6 +233,4 @@ export const certifications: Certification[] = [
     fileUrl: "https://www.credly.com/badges/4a99a823-3467-4a6f-a94f-388c32b50b4b",
     verifyUrl: "https://www.credly.com/badges/4a99a823-3467-4a6f-a94f-388c32b50b4b",
   },
-  { name: "ChatGPT Prompt Engineering for Developers" },
-  { name: "Agent Skills with Anthropic" },
 ];

@@ -43,6 +43,15 @@ export const metadata: Metadata = {
       "Portfolio of Khawaja Muhammad Laeeq — Full-Stack & AI Developer building web, mobile, and AI-powered applications.",
     siteName: "Khawaja Muhammad Laeeq",
     locale: "en_US",
+    // Card image is supplied by app/opengraph-image.tsx.
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Khawaja Muhammad Laeeq | Full-Stack & AI Developer",
+    description:
+      "Portfolio of Khawaja Muhammad Laeeq — Full-Stack & AI Developer building web, mobile, and AI-powered applications.",
+    // Card image is supplied by app/twitter-image.tsx.
   },
 
   robots: {
