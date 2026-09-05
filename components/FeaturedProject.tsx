@@ -4,9 +4,6 @@ import type { Project } from "@/data/cv";
 
 export default function FeaturedProject({ project }: { project: Project }) {
   const previewUrl = project.liveUrl ?? project.links[0]?.href;
-  const previewHost = project.liveUrl
-    ? new URL(project.liveUrl).host
-    : "preview";
 
   return (
     <div className="relative overflow-hidden rounded-xl border border-accent/30 bg-surface shadow-md transition-shadow duration-300 hover:shadow-[0_12px_40px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
@@ -75,14 +72,6 @@ export default function FeaturedProject({ project }: { project: Project }) {
               aria-label={`Visit ${project.name} live site`}
               className="hud-frame group/preview relative block w-full max-w-md overflow-hidden rounded-lg border border-border bg-surface shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_50px_color-mix(in_srgb,var(--accent)_28%,transparent)]"
             >
-              <div className="flex items-center gap-2 border-b border-border bg-surface-2 px-3 py-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-                <span className="ml-2 truncate rounded bg-surface px-2 py-0.5 text-[11px] text-muted">
-                  {previewHost}
-                </span>
-              </div>
               <div className="relative aspect-[1900/867] w-full">
                 <Image
                   src={project.image}
