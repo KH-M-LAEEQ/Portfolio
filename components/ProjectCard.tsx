@@ -4,19 +4,30 @@ import type { Project } from "@/data/cv";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const isDeployed = project.status === "Completed · Deployed";
+  const previewUrl = project.liveUrl ?? project.links[0]?.href;
 
   return (
     <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--accent)_18%,transparent)]">
       {project.image && (
-        <div className="relative mb-4 aspect-[1900/867] w-full overflow-hidden rounded-lg border border-border bg-surface-2">
+        <a
+          href={previewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Visit ${project.name} live site`}
+          className="group/preview relative mb-4 block aspect-[1900/867] w-full overflow-hidden rounded-lg border border-border bg-surface-2"
+        >
           <Image
             src={project.image}
             alt={`${project.name} screenshot`}
             fill
-            className="object-cover object-top"
+            className="object-cover object-top transition-transform duration-500 group-hover/preview:scale-[1.03]"
             sizes="(min-width: 768px) 24rem, 100vw"
           />
-        </div>
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-gradient-to-t from-black/75 to-transparent px-3 pb-3 pt-8 text-xs font-semibold text-white opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">
+            Visit live site
+            <ArrowUpRight size={13} />
+          </span>
+        </a>
       )}
       <div className="mb-3 flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-foreground">{project.name}</h3>
