@@ -81,6 +81,8 @@ export const projects: Project[] = [
     name: "Competitive Intelligence Monitor",
     status: "Completed",
     group: "selected",
+    liveUrl: "https://competitive-intelligence-monitor.vercel.app/",
+    image: "/projects/competitive-intelligence-dashboard.png",
     description:
       "An agentic-AI-driven web app for e-commerce competitor tracking. Monitors competitor websites, surfaces comparisons and new activity, and gives AI-powered suggestions for improving your own store.",
     tags: ["FastAPI", "Next.js", "Agentic AI", "Web Scraping"],
