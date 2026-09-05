@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/data/cv";
 
@@ -6,6 +7,17 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--accent)_18%,transparent)]">
+      {project.image && (
+        <div className="relative mb-4 aspect-[1900/867] w-full overflow-hidden rounded-lg border border-border bg-surface-2">
+          <Image
+            src={project.image}
+            alt={`${project.name} screenshot`}
+            fill
+            className="object-cover object-top"
+            sizes="(min-width: 768px) 24rem, 100vw"
+          />
+        </div>
+      )}
       <div className="mb-3 flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-foreground">{project.name}</h3>
         <span
