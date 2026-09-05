@@ -94,6 +94,17 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "fitness-app",
+    name: "Fitness App",
+    status: "Completed",
+    group: "selected",
+    image: "/projects/fitness-app-dashboard.png",
+    description:
+      "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service.",
+    tags: ["Flutter", "Dart", "Firebase", "Mobile"],
+    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fitness-App" }],
+  },
+  {
     slug: "fake-news-detector",
     name: "Fake News Detector",
     status: "Completed",
@@ -135,17 +146,6 @@ export const projects: Project[] = [
       "A social media application with authentication, posts, image uploads, and real-time feeds using Firebase Authentication, Firestore, and Storage.",
     tags: ["Firebase", "Firestore", "Auth", "Real-time"],
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/insta" }],
-  },
-  {
-    slug: "fitness-app",
-    name: "Fitness App",
-    status: "Completed",
-    group: "selected",
-    image: "/projects/fitness-app-dashboard.png",
-    description:
-      "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service.",
-    tags: ["Flutter", "Dart", "Firebase", "Mobile"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fitness-App" }],
   },
   {
     slug: "aws-vpn",
