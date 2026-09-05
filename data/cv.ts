@@ -98,6 +98,7 @@ export const projects: Project[] = [
     name: "Fitness App",
     status: "Completed",
     group: "selected",
+    liveUrl: "https://fitnessapp-a5ec5.web.app",
     image: "/projects/fitness-app-dashboard.png",
     description:
       "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service.",
