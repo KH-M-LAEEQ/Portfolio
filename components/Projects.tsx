@@ -2,11 +2,32 @@ import SectionHeading from "@/components/SectionHeading";
 import ProjectCard from "@/components/ProjectCard";
 import FeaturedProject from "@/components/FeaturedProject";
 import Reveal from "@/components/Reveal";
-import { projects } from "@/data/cv";
+import { projects, type Project } from "@/data/cv";
+
+type Chunk = { type: "featured"; project: Project } | { type: "grid"; items: Project[] };
+
+function chunkProjects(items: Project[]): Chunk[] {
+  const chunks: Chunk[] = [];
+  let buffer: Project[] = [];
+
+  for (const project of items) {
+    if (project.featured) {
+      if (buffer.length) {
+        chunks.push({ type: "grid", items: buffer });
+        buffer = [];
+      }
+      chunks.push({ type: "featured", project });
+    } else {
+      buffer.push(project);
+    }
+  }
+  if (buffer.length) chunks.push({ type: "grid", items: buffer });
+
+  return chunks;
+}
 
 export default function Projects() {
-  const featured = projects.find((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
+  const chunks = chunkProjects(projects);
 
   return (
     <section id="projects" className="scroll-mt-20 border-b border-border">
@@ -15,18 +36,22 @@ export default function Projects() {
           <SectionHeading eyebrow="What I've built" title="Projects" />
         </Reveal>
 
-        {featured && (
-          <Reveal className="mb-8">
-            <FeaturedProject project={featured} />
-          </Reveal>
-        )}
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {rest.map((project, i) => (
-            <Reveal key={project.slug} delay={Math.min(i * 60, 240)}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
+        <div className="space-y-8">
+          {chunks.map((chunk, i) =>
+            chunk.type === "featured" ? (
+              <Reveal key={chunk.project.slug}>
+                <FeaturedProject project={chunk.project} />
+              </Reveal>
+            ) : (
+              <div key={`grid-${i}`} className="grid gap-6 md:grid-cols-2">
+                {chunk.items.map((project, j) => (
+                  <Reveal key={project.slug} delay={Math.min(j * 60, 240)}>
+                    <ProjectCard project={project} />
+                  </Reveal>
+                ))}
+              </div>
+            ),
+          )}
         </div>
       </div>
     </section>

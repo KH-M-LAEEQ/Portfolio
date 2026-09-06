@@ -106,19 +106,10 @@ export const projects: Project[] = [
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fitness-App" }],
   },
   {
-    slug: "fake-news-detector",
-    name: "Fake News Detector",
-    status: "Completed",
-    group: "coursework",
-    description:
-      "A fake news detection tool built with Python and Flutter, using K-Means clustering and KNN. Paste in a news article and the model classifies it as fake or real.",
-    tags: ["Python", "Flutter", "K-Means", "KNN", "ML"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fake-News-Detctor" }],
-  },
-  {
     slug: "olx-clone",
     name: "OLX Clone",
     status: "Completed",
+    featured: true,
     group: "coursework",
     liveUrl: "https://olx-backend-h6yd.onrender.com/api",
     image: "/projects/olx-clone.png",
@@ -129,6 +120,16 @@ export const projects: Project[] = [
       { label: "Frontend", href: "https://github.com/KH-M-LAEEQ/olx-Frontend" },
       { label: "Backend", href: "https://github.com/KH-M-LAEEQ/olx-backend" },
     ],
+  },
+  {
+    slug: "fake-news-detector",
+    name: "Fake News Detector",
+    status: "Completed",
+    group: "coursework",
+    description:
+      "A fake news detection tool built with Python and Flutter, using K-Means clustering and KNN. Paste in a news article and the model classifies it as fake or real.",
+    tags: ["Python", "Flutter", "K-Means", "KNN", "ML"],
+    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fake-News-Detctor" }],
   },
   {
     slug: "pakwheels-clone",

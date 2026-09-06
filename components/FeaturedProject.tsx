@@ -77,7 +77,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
                   src={project.image}
                   alt={`${project.name} screenshot`}
                   fill
-                  className="object-cover object-top transition-transform duration-500 group-hover/preview:scale-[1.03]"
+                  className="object-contain transition-transform duration-500 group-hover/preview:scale-[1.03]"
                   sizes="(min-width: 768px) 28rem, 100vw"
                   priority
                 />
