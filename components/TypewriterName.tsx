@@ -1,38 +1,50 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+
+function subscribeReducedMotion(callback: () => void) {
+  const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
 
 export default function TypewriterName({ text }: { text: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [count, setCount] = useState(0);
-  const [typing, setTyping] = useState(true);
+  const [tickCount, setTickCount] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  const reduceMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot,
+  );
+
+  const count = reduceMotion ? text.length : tickCount;
+  const typing = reduceMotion ? false : isTyping;
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (reduceMotion) {
-      setCount(text.length);
-      setTyping(false);
-      return;
-    }
+    if (!el || reduceMotion) return;
 
     let interval: ReturnType<typeof setInterval> | null = null;
 
     function startTyping() {
       if (interval) clearInterval(interval);
-      setCount(0);
-      setTyping(true);
+      setTickCount(0);
+      setIsTyping(true);
 
       interval = setInterval(() => {
-        setCount((c) => {
+        setTickCount((c) => {
           if (c >= text.length) {
             if (interval) clearInterval(interval);
-            setTyping(false);
+            setIsTyping(false);
             return c;
           }
           return c + 1;
@@ -55,7 +67,7 @@ export default function TypewriterName({ text }: { text: string }) {
       observer.disconnect();
       if (interval) clearInterval(interval);
     };
-  }, [text]);
+  }, [text, reduceMotion]);
 
   return (
     <span ref={ref} className="relative inline-block">
