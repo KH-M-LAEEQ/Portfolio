@@ -95,7 +95,7 @@ export const projects: Project[] = [
     name: "OLX Clone",
     status: "Completed",
     group: "coursework",
-    liveUrl: "https://olx-backend-h6yd.onrender.com/api",
+    liveUrl: "https://olx-frontend-eight.vercel.app/",
     image: "/projects/olx-clone.png",
     description:
       "A marketplace application with separate frontend and backend architectures. Implements authentication, product listings, search functionality, CRUD operations, REST APIs, and relational database design.",
