@@ -15,7 +15,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           rel="noopener noreferrer"
           aria-label={`Visit ${project.name} live site`}
           className="group/preview relative mb-4 block w-full overflow-hidden rounded-lg border border-border bg-surface-2"
-          style={{ aspectRatio: project.imageAspect ?? "1900/867" }}
+          style={{ aspectRatio: project.imageAspect ?? "16/9" }}
         >
           <Image
             src={project.image}

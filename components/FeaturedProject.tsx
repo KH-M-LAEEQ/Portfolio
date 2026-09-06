@@ -74,7 +74,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
             >
               <div
                 className="relative w-full"
-                style={{ aspectRatio: project.imageAspect ?? "1900/867" }}
+                style={{ aspectRatio: project.imageAspect ?? "16/9" }}
               >
                 <Image
                   src={project.image}
