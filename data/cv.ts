@@ -78,24 +78,6 @@ export const projects: Project[] = [
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/GrantPilot" }],
   },
   {
-    slug: "competitive-intelligence-monitor",
-    name: "Competitive Intelligence Monitor",
-    status: "Completed",
-    featured: true,
-    group: "selected",
-    liveUrl: "https://competitive-intelligence-monitor.vercel.app/",
-    image: "/projects/competitive-intelligence-dashboard.png",
-    description:
-      "An agentic-AI-driven web app for e-commerce competitor tracking. Monitors competitor websites, surfaces comparisons and new activity, and gives AI-powered suggestions for improving your own store.",
-    tags: ["FastAPI", "Next.js", "Agentic AI", "Web Scraping"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/KH-M-LAEEQ/Competitive_Intelligence_Monitor",
-      },
-    ],
-  },
-  {
     slug: "fitness-app",
     name: "Fitness App",
     status: "Completed",
@@ -121,6 +103,24 @@ export const projects: Project[] = [
     links: [
       { label: "Frontend", href: "https://github.com/KH-M-LAEEQ/olx-Frontend" },
       { label: "Backend", href: "https://github.com/KH-M-LAEEQ/olx-backend" },
+    ],
+  },
+  {
+    slug: "competitive-intelligence-monitor",
+    name: "Competitive Intelligence Monitor",
+    status: "Completed",
+    featured: true,
+    group: "selected",
+    liveUrl: "https://competitive-intelligence-monitor.vercel.app/",
+    image: "/projects/competitive-intelligence-dashboard.png",
+    description:
+      "An agentic-AI-driven web app for e-commerce competitor tracking. Monitors competitor websites, surfaces comparisons and new activity, and gives AI-powered suggestions for improving your own store.",
+    tags: ["FastAPI", "Next.js", "Agentic AI", "Web Scraping"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/KH-M-LAEEQ/Competitive_Intelligence_Monitor",
+      },
     ],
   },
   {
