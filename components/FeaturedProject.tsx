@@ -72,12 +72,15 @@ export default function FeaturedProject({ project }: { project: Project }) {
               aria-label={`Visit ${project.name} live site`}
               className="hud-frame group/preview relative block w-full max-w-md overflow-hidden rounded-lg border border-border bg-surface shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_50px_color-mix(in_srgb,var(--accent)_28%,transparent)]"
             >
-              <div className="relative aspect-[1900/867] w-full">
+              <div
+                className="relative w-full"
+                style={{ aspectRatio: project.imageAspect ?? "1900/867" }}
+              >
                 <Image
                   src={project.image}
                   alt={`${project.name} screenshot`}
                   fill
-                  className="object-contain transition-transform duration-500 group-hover/preview:scale-[1.03]"
+                  className="object-cover object-top transition-transform duration-500 group-hover/preview:scale-[1.03]"
                   sizes="(min-width: 768px) 28rem, 100vw"
                   priority
                 />

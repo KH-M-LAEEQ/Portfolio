@@ -58,6 +58,7 @@ export type Project = {
   group?: ProjectGroup;
   liveUrl?: string;
   image?: string;
+  imageAspect?: string;
   description: string;
   tags: string[];
   links: ProjectLink[];
@@ -80,6 +81,7 @@ export const projects: Project[] = [
     slug: "competitive-intelligence-monitor",
     name: "Competitive Intelligence Monitor",
     status: "Completed",
+    featured: true,
     group: "selected",
     liveUrl: "https://competitive-intelligence-monitor.vercel.app/",
     image: "/projects/competitive-intelligence-dashboard.png",
@@ -100,6 +102,7 @@ export const projects: Project[] = [
     group: "selected",
     liveUrl: "https://fitnessapp-a5ec5.web.app",
     image: "/projects/fitness-app-dashboard.png",
+    imageAspect: "1280/900",
     description:
       "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service. Primarily a mobile app; the live demo is a web build of the same codebase.",
     tags: ["Flutter", "Dart", "Firebase", "Mobile"],
@@ -109,7 +112,6 @@ export const projects: Project[] = [
     slug: "olx-clone",
     name: "OLX Clone",
     status: "Completed",
-    featured: true,
     group: "coursework",
     liveUrl: "https://olx-backend-h6yd.onrender.com/api",
     image: "/projects/olx-clone.png",

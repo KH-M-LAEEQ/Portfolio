@@ -14,13 +14,14 @@ export default function ProjectCard({ project }: { project: Project }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Visit ${project.name} live site`}
-          className="group/preview relative mb-4 block aspect-[1900/867] w-full overflow-hidden rounded-lg border border-border bg-surface-2"
+          className="group/preview relative mb-4 block w-full overflow-hidden rounded-lg border border-border bg-surface-2"
+          style={{ aspectRatio: project.imageAspect ?? "1900/867" }}
         >
           <Image
             src={project.image}
             alt={`${project.name} screenshot`}
             fill
-            className="object-contain transition-transform duration-500 group-hover/preview:scale-[1.03]"
+            className="object-cover object-top transition-transform duration-500 group-hover/preview:scale-[1.03]"
             sizes="(min-width: 768px) 24rem, 100vw"
           />
           <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-gradient-to-t from-black/75 to-transparent px-3 pb-3 pt-8 text-xs font-semibold text-white opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">
