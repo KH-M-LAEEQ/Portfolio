@@ -146,10 +146,40 @@ body {
   animation: fade-in-up 0.7s ease-out both;
 }
 
+@keyframes avatar-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 12px color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+}
+
+.animate-avatar-glow {
+  animation: avatar-glow 1.6s ease-in-out infinite;
+}
+
+@keyframes waveform-bar {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 22px;
+  }
+}
+
+.animate-waveform-bar {
+  animation: waveform-bar 0.9s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse-dot,
   .animate-blob-breathe,
-  .animate-fade-in-up {
+  .animate-fade-in-up,
+  .animate-avatar-glow,
+  .animate-waveform-bar {
     animation: none;
   }
 }

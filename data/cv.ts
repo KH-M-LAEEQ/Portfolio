@@ -78,17 +78,17 @@ export const projects: Project[] = [
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/GrantPilot" }],
   },
   {
-    slug: "fitness-app",
-    name: "Fitness App",
-    status: "Completed",
+    slug: "khawaja-law",
+    name: "Khawaja and Associates",
+    status: "Completed · Deployed",
     group: "selected",
-    liveUrl: "https://fitnessapp-a5ec5.web.app",
-    image: "/projects/fitness-app-dashboard.png",
-    imageAspect: "1280/900",
+    liveUrl: "https://www.khawajalaw.site",
+    image: "/projects/khawaja-law.png",
+    imageAspect: "1901/860",
     description:
-      "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service. Primarily a mobile app; the live demo is a web build of the same codebase.",
-    tags: ["Flutter", "Dart", "Firebase", "Mobile"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fitness-App" }],
+      "A law firm website for an established Lahore tax law practice. Presents the firm's history, practice areas, team, and publications with a clean, editorial design.",
+    tags: ["Next.js", "Web Design", "Law Firm"],
+    links: [],
   },
   {
     slug: "olx-clone",
@@ -124,6 +124,29 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "fitness-app",
+    name: "Fitness App",
+    status: "Completed",
+    group: "selected",
+    liveUrl: "https://fitnessapp-a5ec5.web.app",
+    image: "/projects/fitness-app-dashboard.png",
+    imageAspect: "1280/900",
+    description:
+      "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service. Primarily a mobile app; the live demo is a web build of the same codebase.",
+    tags: ["Flutter", "Dart", "Firebase", "Mobile"],
+    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fitness-App" }],
+  },
+  {
+    slug: "pakwheels-clone",
+    name: "PakWheels Mobile App Clone",
+    status: "Completed",
+    group: "coursework",
+    description:
+      "A Flutter application featuring vehicle listings, search filters, and detailed vehicle views. Designed the UI/UX from Figma wireframes, then built out responsive layouts and navigation, category browsing, and a detail view with image galleries and seller info.",
+    tags: ["Flutter", "Dart", "Figma", "Mobile"],
+    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/PakWheels" }],
+  },
+  {
     slug: "fake-news-detector",
     name: "Fake News Detector",
     status: "Completed",
@@ -132,16 +155,6 @@ export const projects: Project[] = [
       "A fake news detection tool built with Python and Flutter, using K-Means clustering and KNN. Paste in a news article and the model classifies it as fake or real.",
     tags: ["Python", "Flutter", "K-Means", "KNN", "ML"],
     links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fake-News-Detctor" }],
-  },
-  {
-    slug: "pakwheels-clone",
-    name: "PakWheels Mobile App Clone",
-    status: "Completed",
-    group: "coursework",
-    description:
-      "A Flutter application featuring vehicle listings, search filters, and detailed vehicle views. UI/UX designed using Figma wireframes with responsive layouts and navigation.",
-    tags: ["Flutter", "Dart", "Figma", "Mobile"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/PakWheels" }],
   },
   {
     slug: "instagram-clone",
