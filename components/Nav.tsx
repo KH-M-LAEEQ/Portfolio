@@ -1,19 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Mail, Menu, X } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import ThemeToggle from "@/components/ThemeToggle";
 import { profile } from "@/data/cv";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#certifications", label: "Certifications" },
-  { href: "#articles", label: "Articles" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "About", sectionId: "about" },
+  { href: "#experience", label: "Experience", sectionId: "experience" },
+  { href: "/projects", label: "Projects", sectionId: "projects" },
+  { href: "#skills", label: "Skills", sectionId: "skills" },
+  { href: "#certifications", label: "Certifications", sectionId: "certifications" },
+  { href: "/articles", label: "Articles", sectionId: "articles" },
+  { href: "#contact", label: "Contact", sectionId: "contact" },
 ];
 
 export default function Nav() {
@@ -22,14 +23,14 @@ export default function Nav() {
 
   useEffect(() => {
     const sections = links
-      .map((link) => document.getElementById(link.href.slice(1)))
+      .map((link) => document.getElementById(link.sectionId))
       .filter((el): el is HTMLElement => Boolean(el));
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActive(`#${entry.target.id}`);
+            setActive(entry.target.id);
           }
         });
       },
@@ -50,20 +51,26 @@ export default function Nav() {
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-                  active === link.href
-                    ? "bg-accent/10 text-accent"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {links.map((link) => {
+            const className = `rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+              active === link.sectionId
+                ? "bg-accent/10 text-accent"
+                : "text-muted hover:text-foreground"
+            }`;
+            return (
+              <li key={link.href}>
+                {link.href.startsWith("/") ? (
+                  <Link href={link.href} className={className}>
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a href={link.href} className={className}>
+                    {link.label}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         <div className="flex items-center gap-1">
@@ -111,21 +118,26 @@ export default function Nav() {
       {open && (
         <div className="border-t border-border px-6 py-4 md:hidden">
           <ul className="flex flex-col gap-1">
-            {links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                    active === link.href
-                      ? "bg-accent/10 text-accent"
-                      : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {links.map((link) => {
+              const className = `block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                active === link.sectionId
+                  ? "bg-accent/10 text-accent"
+                  : "text-muted hover:text-foreground"
+              }`;
+              return (
+                <li key={link.href}>
+                  {link.href.startsWith("/") ? (
+                    <Link href={link.href} onClick={() => setOpen(false)} className={className}>
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a href={link.href} onClick={() => setOpen(false)} className={className}>
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <div className="mt-3 flex items-center gap-1 border-t border-border pt-3">
