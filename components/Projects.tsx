@@ -1,33 +1,14 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import ProjectCard from "@/components/ProjectCard";
-import FeaturedProject from "@/components/FeaturedProject";
+import ProjectList from "@/components/ProjectList";
 import Reveal from "@/components/Reveal";
-import { projects, type Project } from "@/data/cv";
+import { projects } from "@/data/cv";
 
-type Chunk = { type: "featured"; project: Project } | { type: "grid"; items: Project[] };
-
-function chunkProjects(items: Project[]): Chunk[] {
-  const chunks: Chunk[] = [];
-  let buffer: Project[] = [];
-
-  for (const project of items) {
-    if (project.featured) {
-      if (buffer.length) {
-        chunks.push({ type: "grid", items: buffer });
-        buffer = [];
-      }
-      chunks.push({ type: "featured", project });
-    } else {
-      buffer.push(project);
-    }
-  }
-  if (buffer.length) chunks.push({ type: "grid", items: buffer });
-
-  return chunks;
-}
+const HOME_SLUGS = ["grantpilot", "khawaja-law", "competitive-intelligence-monitor"];
 
 export default function Projects() {
-  const chunks = chunkProjects(projects);
+  const homeProjects = projects.filter((p) => HOME_SLUGS.includes(p.slug));
 
   return (
     <section id="projects" className="scroll-mt-20 border-b border-border">
@@ -36,23 +17,19 @@ export default function Projects() {
           <SectionHeading eyebrow="What I've built" title="Projects" />
         </Reveal>
 
-        <div className="space-y-8">
-          {chunks.map((chunk, i) =>
-            chunk.type === "featured" ? (
-              <Reveal key={chunk.project.slug}>
-                <FeaturedProject project={chunk.project} />
-              </Reveal>
-            ) : (
-              <div key={`grid-${i}`} className="grid gap-6 md:grid-cols-2">
-                {chunk.items.map((project, j) => (
-                  <Reveal key={project.slug} delay={Math.min(j * 60, 240)}>
-                    <ProjectCard project={project} />
-                  </Reveal>
-                ))}
-              </div>
-            ),
-          )}
-        </div>
+        <ProjectList projects={homeProjects} />
+
+        <Reveal delay={120}>
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/projects"
+              className="flex items-center gap-1.5 rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:border-accent hover:text-accent"
+            >
+              View More Projects
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

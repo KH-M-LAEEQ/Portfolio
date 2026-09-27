@@ -31,13 +31,31 @@ export const education: Education[] = [
   },
 ];
 
-export const experience = {
-  company: "Arbisoft",
-  role: "Software Engineering Intern",
-  period: "June 2026 – July 2026",
-  description:
-    "Built full-stack web applications using Django and React, working across frontend, backend, REST APIs, authentication systems, and testing practices. Learned about MCP, embeddings, and LLMs, and applied that knowledge to integrate LLMs into applications and build agentic workflows.",
+export type Experience = {
+  company: string;
+  role: string;
+  period: string;
+  description: string;
+  fileUrl?: string;
 };
+
+export const experience: Experience[] = [
+  {
+    company: "Arbisoft",
+    role: "Agentic AI Intern",
+    period: "June 1, 2026 – August 7, 2026",
+    description:
+      "Built full-stack web applications using Django and React, working across frontend, backend, REST APIs, authentication systems, and testing practices. Learned about MCP, embeddings, and LLMs, and applied that knowledge to integrate LLMs into applications and build agentic workflows.",
+    fileUrl: "/certificates/arbisoft-internship-letter.pdf",
+  },
+  {
+    company: "Arch Technologies",
+    role: "ML Intern (Remote)",
+    period: "September 1, 2026 – November 4, 2026",
+    description:
+      "Developed and evaluated machine learning models using Python, NumPy, Pandas, and Scikit-learn. Explored neural networks and deep learning with PyTorch, and worked on NLP tasks including text classification, embeddings, and transformers. Gained exposure to LLM application development, RAG pipelines, and vector databases.",
+  },
+];
 
 export type ProjectStatus = "Completed" | "Completed · Deployed";
 
@@ -109,7 +127,6 @@ export const projects: Project[] = [
     slug: "competitive-intelligence-monitor",
     name: "Competitive Intelligence Monitor",
     status: "Completed",
-    featured: true,
     group: "selected",
     liveUrl: "https://competitive-intelligence-monitor.vercel.app/",
     image: "/projects/competitive-intelligence-dashboard.png",
@@ -203,6 +220,42 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   { category: "AI", skills: ["LLM Applications", "Agentic AI", "MCP"] },
+];
+
+export type Article = {
+  title: string;
+  href: string;
+  publication?: string;
+  date?: string;
+  description?: string;
+  image?: string;
+};
+
+export const articles: Article[] = [
+  {
+    title: "From Prototype to Production: Lessons from Deploying My First Agent",
+    href: "https://medium.com/@khawajalaeeq2/from-prototype-to-production-lessons-from-deploying-my-first-agent-3a2d6ce99b58",
+    publication: "Medium",
+    image: "/articles/agent-memory-architecture.jpg",
+  },
+  {
+    title: "Streaming Agent Responses to a React/Next.js UI in Real Time",
+    href: "https://medium.com/@khawajalaeeq2/streaming-agent-responses-to-a-react-next-js-ui-in-real-time-77b782bec8ae",
+    publication: "Medium",
+    image: "/articles/streaming-agent-ui.webp",
+  },
+  {
+    title: "Single-Agent vs Multi-Agent Systems: When Do You Actually Need More Than One?",
+    href: "https://medium.com/@khawajalaeeq2/single-agent-vs-multi-agent-systems-when-do-you-actually-need-more-than-one-9d011d28671b",
+    publication: "Medium",
+    image: "/articles/single-vs-multi-agent.jpg",
+  },
+  {
+    title: "Short-Term vs Long-Term Memory in AI Agents: A Practical Implementation",
+    href: "https://medium.com/@khawajalaeeq2/short-term-vs-long-term-memory-in-ai-agents-a-practical-implementation-327511895227",
+    publication: "Medium",
+    image: "/articles/short-vs-long-term-memory.jpg",
+  },
 ];
 
 export type Certification = {
