@@ -233,6 +233,12 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    title: "5 Guardrails I Add Before Any AI Agent Touches Real Data",
+    href: "https://medium.com/@khawajalaeeq2/5-guardrails-i-add-before-any-ai-agent-touches-real-data-1cdc07b32896",
+    publication: "Medium",
+    image: "/articles/guard.jpg",
+  },
+  {
     title: "From Prototype to Production: Lessons from Deploying My First Agent",
     href: "https://medium.com/@khawajalaeeq2/from-prototype-to-production-lessons-from-deploying-my-first-agent-3a2d6ce99b58",
     publication: "Medium",
