@@ -7,7 +7,12 @@ export type ChatMessage = {
   content: string;
 };
 
-const STORAGE_KEY = "portfolio-chat-history-v1";
+// Namespaced per-site (not just "portfolio-chat-history") — on localhost,
+// every dev project shares the same origin (localhost:3000), so a generic
+// key would leak one site's chat history into another's during local
+// testing. Doesn't matter in production (real distinct domains), but costs
+// nothing to get right.
+const STORAGE_KEY = "khawajalaeeq-portfolio-chat-history-v1";
 
 function loadSavedMessages(initialMessage: ChatMessage): ChatMessage[] {
   if (typeof window === "undefined") return [initialMessage];
