@@ -235,13 +235,6 @@ export type Article = {
 
 export const articles: Article[] = [
   {
-    title: "AI Agents Are Getting Employee IDs. What Does an Agent Need on Day One?",
-    upcoming: true,
-    description:
-      "What AI agents actually need to operate safely and accountably — identity, scoped permissions, a dedicated workspace, spending limits, human approval gates, and a real offboarding process — treating agent infrastructure like employee onboarding, not just prompt engineering.",
-    image: "/articles/agent-employee-id.jpg",
-  },
-  {
     title: "5 Guardrails I Add Before Any AI Agent Touches Real Data",
     href: "https://medium.com/@khawajalaeeq2/5-guardrails-i-add-before-any-ai-agent-touches-real-data-1cdc07b32896",
     publication: "Medium",
