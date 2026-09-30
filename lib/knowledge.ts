@@ -72,11 +72,15 @@ export function buildChunks(): Chunk[] {
     text: `Certifications:\n${certifications.map((c) => `- ${c.courseTitle ?? c.name}${c.issuer ? ` (${c.issuer})` : ""}`).join("\n")}`,
   });
 
-  chunks.push({
-    id: "articles",
-    category: "articles",
-    text: `Articles written:\n${articles.map((a) => `- "${a.title}"${a.publication ? ` (${a.publication})` : ""} — ${a.href}`).join("\n")}`,
-  });
+  for (const [i, a] of articles.entries()) {
+    chunks.push({
+      id: `article:${i}`,
+      category: "articles",
+      text: `Article — "${a.title}"${a.publication ? ` (${a.publication})` : ""}: ${
+        a.description ?? "No summary available."
+      } Link: ${a.href}`,
+    });
+  }
 
   return chunks;
 }

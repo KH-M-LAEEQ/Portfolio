@@ -236,30 +236,40 @@ export const articles: Article[] = [
     title: "5 Guardrails I Add Before Any AI Agent Touches Real Data",
     href: "https://medium.com/@khawajalaeeq2/5-guardrails-i-add-before-any-ai-agent-touches-real-data-1cdc07b32896",
     publication: "Medium",
+    description:
+      "Five infrastructure-level safety layers for agents with real-world access: scoped tool permissions, allow-listed destinations, data-loss prevention, human approval gates, and full action logging.",
     image: "/articles/guard.jpg",
   },
   {
     title: "From Prototype to Production: Lessons from Deploying My First Agent",
     href: "https://medium.com/@khawajalaeeq2/from-prototype-to-production-lessons-from-deploying-my-first-agent-3a2d6ce99b58",
     publication: "Medium",
+    description:
+      "What it actually takes to ship an agent to production: background workers, Docker, env-based config, timeouts/retries on external calls, and full execution-trace logging.",
     image: "/articles/agent-memory-architecture.jpg",
   },
   {
     title: "Streaming Agent Responses to a React/Next.js UI in Real Time",
     href: "https://medium.com/@khawajalaeeq2/streaming-agent-responses-to-a-react-next-js-ui-in-real-time-77b782bec8ae",
     publication: "Medium",
+    description:
+      "Streaming an agent's progress — text, tool status, completion — to a React UI in real time using Server-Sent Events and a FastAPI backend.",
     image: "/articles/streaming-agent-ui.webp",
   },
   {
     title: "Single-Agent vs Multi-Agent Systems: When Do You Actually Need More Than One?",
     href: "https://medium.com/@khawajalaeeq2/single-agent-vs-multi-agent-systems-when-do-you-actually-need-more-than-one-9d011d28671b",
     publication: "Medium",
+    description:
+      "Why a single well-equipped agent usually beats multi-agent orchestration — the latter only pays off on broad, parallel tasks, at roughly 3.75x the token cost.",
     image: "/articles/single-vs-multi-agent.jpg",
   },
   {
     title: "Short-Term vs Long-Term Memory in AI Agents: A Practical Implementation",
     href: "https://medium.com/@khawajalaeeq2/short-term-vs-long-term-memory-in-ai-agents-a-practical-implementation-327511895227",
     publication: "Medium",
+    description:
+      "A dual-memory architecture with PostgreSQL + pgvector — rolling-summary short-term memory plus embedding-based long-term memory — to keep prompt size constant as conversations grow.",
     image: "/articles/short-vs-long-term-memory.jpg",
   },
 ];
