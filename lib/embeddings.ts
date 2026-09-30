@@ -16,6 +16,7 @@ const EMBEDDING_MODEL = "nvidia/nemotron-3-embed-1b";
 const TOP_K = 5;
 
 async function embed(texts: string[], inputType: "query" | "passage"): Promise<number[][]> {
+  console.log("NVIDIA embeddings request:", { baseURL: nvidia.baseURL, model: EMBEDDING_MODEL, inputType });
   const response = await nvidia.embeddings.create({
     model: EMBEDDING_MODEL,
     input: texts,
@@ -98,7 +99,14 @@ export async function retrieveRelevantChunks(query: string): Promise<Chunk[]> {
 
     return [...selected.values()];
   } catch (err) {
-    console.error("RAG retrieval failed, falling back to full knowledge base:", err);
+    const status = (err as { status?: number } | undefined)?.status;
+    console.error("RAG retrieval failed, falling back to full knowledge base:", {
+      baseURL: nvidia.baseURL,
+      model: EMBEDDING_MODEL,
+      status,
+      message: err instanceof Error ? err.message : String(err),
+      body: (err as { error?: unknown } | undefined)?.error,
+    });
     return buildChunks();
   }
 }

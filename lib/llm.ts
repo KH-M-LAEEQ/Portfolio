@@ -136,6 +136,7 @@ export async function getChatReply(history: ChatMessage[]): Promise<string> {
 
     for (let round = 0; round <= MAX_TOOL_ROUNDS; round++) {
       const isFinalRound = round === MAX_TOOL_ROUNDS;
+      console.log("NVIDIA chat request:", { baseURL: nvidia.baseURL, model: MODEL, round });
       const response = await nvidia.chat.completions.create(
         {
           model: MODEL,
@@ -187,7 +188,13 @@ export async function getChatReply(history: ChatMessage[]): Promise<string> {
     if (status === 503) {
       throw new ChatUnavailableError("The assistant is temporarily overloaded. Please try again shortly.");
     }
-    console.error("NVIDIA chat completion failed:", err);
+    console.error("NVIDIA chat completion failed:", {
+      baseURL: nvidia.baseURL,
+      model: MODEL,
+      status,
+      message: err instanceof Error ? err.message : String(err),
+      body: (err as { error?: unknown } | undefined)?.error,
+    });
     throw new ChatUnavailableError("Something went wrong generating a reply.");
   } finally {
     clearTimeout(timeout);
