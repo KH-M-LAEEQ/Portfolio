@@ -50,11 +50,19 @@ export function buildChunks(): Chunk[] {
   });
 
   for (const p of projects) {
-    const link = p.liveUrl ?? p.links[0]?.href;
+    // liveUrl and the GitHub repo are different things the model needs
+    // separately — the get_github_repo tool needs the actual repo URL, which
+    // previously got shadowed whenever a project also had a liveUrl.
+    const githubLink = p.links.find(
+      (l) => l.label.toLowerCase().includes("github") || l.href.includes("github.com")
+    )?.href;
+    const otherLink = p.liveUrl ?? p.links.find((l) => l.href !== githubLink)?.href;
     chunks.push({
       id: `project:${p.slug}`,
       category: "project",
-      text: `Project — ${p.name} (${p.status}): ${p.description} Built with: ${p.tags.join(", ")}.${link ? ` Link: ${link}` : ""}`,
+      text: `Project — ${p.name} (${p.status}): ${p.description} Built with: ${p.tags.join(", ")}.${
+        otherLink ? ` Link: ${otherLink}` : ""
+      }${githubLink ? ` GitHub repo: ${githubLink}` : ""}`,
     });
   }
 
