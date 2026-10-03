@@ -326,4 +326,10 @@ export const certifications: Certification[] = [
     fileUrl: "https://www.credly.com/badges/4a99a823-3467-4a6f-a94f-388c32b50b4b",
     verifyUrl: "https://www.credly.com/badges/4a99a823-3467-4a6f-a94f-388c32b50b4b",
   },
+  {
+    name: "Claude Academy Graduate",
+    issuer: "Anthropic · Claude Academy",
+    fileUrl: "https://academy.claude.com/badges/fdf918a7-0368-4f07-b971-35528ee2274a",
+    verifyUrl: "https://academy.claude.com/badges/fdf918a7-0368-4f07-b971-35528ee2274a",
+  },
 ];
