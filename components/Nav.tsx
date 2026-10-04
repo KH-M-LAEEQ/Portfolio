@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Mail, Menu, X } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, MediumIcon } from "@/components/icons";
 import ThemeToggle from "@/components/ThemeToggle";
 import { profile } from "@/data/cv";
 
@@ -11,9 +11,9 @@ const links = [
   { href: "#about", label: "About", sectionId: "about" },
   { href: "#experience", label: "Experience", sectionId: "experience" },
   { href: "/projects", label: "Projects", sectionId: "projects" },
+  { href: "/articles", label: "Articles", sectionId: "articles" },
   { href: "#skills", label: "Skills", sectionId: "skills" },
   { href: "#certifications", label: "Certifications", sectionId: "certifications" },
-  { href: "/articles", label: "Articles", sectionId: "articles" },
   { href: "#contact", label: "Contact", sectionId: "contact" },
 ];
 
@@ -94,6 +94,15 @@ export default function Nav() {
               <LinkedinIcon width={17} height={17} />
             </a>
             <a
+              href={profile.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Medium"
+              className="flex h-9 w-9 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
+            >
+              <MediumIcon width={17} height={17} />
+            </a>
+            <a
               href={`mailto:${profile.email}`}
               aria-label="Email"
               className="flex h-9 w-9 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
@@ -158,6 +167,15 @@ export default function Nav() {
               className="flex h-9 w-9 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
             >
               <LinkedinIcon width={17} height={17} />
+            </a>
+            <a
+              href={profile.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Medium"
+              className="flex h-9 w-9 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
+            >
+              <MediumIcon width={17} height={17} />
             </a>
             <a
               href={`mailto:${profile.email}`}

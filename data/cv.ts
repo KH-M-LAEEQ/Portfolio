@@ -8,8 +8,10 @@ export const profile = {
   githubHandle: "github.com/KH-M-LAEEQ",
   linkedin: "https://www.linkedin.com/in/khawaja-laeeq",
   linkedinHandle: "linkedin.com/in/khawaja-laeeq",
+  medium: "https://medium.com/@khawajalaeeq2",
+  mediumHandle: "medium.com/@khawajalaeeq2",
   summary:
-    "Agentic AI and Full-Stack Developer with hands-on experience in full-stack development, mobile applications, databases, cloud technologies, and AI-powered systems. Completed a Software Engineering Internship at Arbisoft and built projects involving web applications, REST APIs, cloud infrastructure, and AI-driven workflows. Passionate about building scalable software and continuously learning modern technologies.",
+    "Agentic AI and Full-Stack Developer with hands-on experience across web, mobile, databases, and cloud infrastructure. I've worked as an Agentic AI Intern at Arbisoft, building full-stack applications and integrating LLMs into agentic workflows, and as an ML Intern at Arch Technologies, working on NLP, embeddings, and RAG pipelines. I bring that practical AI/LLM experience into my own projects — from LLM-powered recommendation systems to agentic tools that monitor competitor activity and surface insights.",
 };
 
 export type Education = {
@@ -88,6 +90,7 @@ export const projects: Project[] = [
     name: "GrantPilot",
     status: "Completed · Deployed",
     featured: true,
+    group: "selected",
     liveUrl: "https://www.grantpilot.works",
     image: "/projects/grantpilot-opportunities.png",
     description:
@@ -126,7 +129,7 @@ export const projects: Project[] = [
   {
     slug: "competitive-intelligence-monitor",
     name: "Competitive Intelligence Monitor",
-    status: "Completed",
+    status: "Completed · Deployed",
     group: "selected",
     liveUrl: "https://competitive-intelligence-monitor.vercel.app/",
     image: "/projects/competitive-intelligence-dashboard.png",
@@ -219,7 +222,10 @@ export const skillGroups: SkillGroup[] = [
       "Postman",
     ],
   },
-  { category: "AI", skills: ["LLM Applications", "Agentic AI", "MCP"] },
+  {
+    category: "AI",
+    skills: ["LLM Applications", "Agentic AI", "RAG", "Embeddings", "Vector Databases", "MCP"],
+  },
 ];
 
 export type Article = {

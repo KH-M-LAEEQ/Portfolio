@@ -1,9 +1,19 @@
+import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, MediumIcon } from "@/components/icons";
 import { profile } from "@/data/cv";
+
+const exploreLinks = [
+  { href: "/#about", label: "About" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/projects", label: "Projects" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#certifications", label: "Certifications" },
+  { href: "/articles", label: "Articles" },
+];
 
 export default function Footer() {
   return (
@@ -77,6 +87,22 @@ export default function Footer() {
                   </span>
                 </span>
               </a>
+              <a
+                href={profile.medium}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3"
+              >
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                  <MediumIcon width={18} height={18} />
+                </span>
+                <span>
+                  <span className="block text-xs text-muted">Medium</span>
+                  <span className="block text-sm font-semibold text-foreground">
+                    {profile.mediumHandle.replace("medium.com", "")}
+                  </span>
+                </span>
+              </a>
               <div className="flex items-start gap-3">
                 <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
                   <MapPin size={18} />
@@ -93,6 +119,18 @@ export default function Footer() {
             <ContactForm />
           </div>
         </Reveal>
+
+        <nav aria-label="Site sections" className="mt-14 border-t border-border pt-6">
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
+            {exploreLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="transition-colors hover:text-foreground">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </footer>
   );

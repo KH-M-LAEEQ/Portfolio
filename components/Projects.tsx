@@ -17,6 +17,22 @@ export default function Projects() {
           <SectionHeading eyebrow="What I've built" title="Projects" />
         </Reveal>
 
+        <Reveal delay={40}>
+          <p className="mb-10 max-w-2xl text-sm leading-relaxed text-foreground/70 md:text-base">
+            A selection of the products I&apos;ve designed and built end-to-end — from
+            AI-powered platforms like{" "}
+            <a
+              href="https://www.grantpilot.works"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-accent hover:underline"
+            >
+              GrantPilot
+            </a>{" "}
+            to full-stack web and mobile apps.
+          </p>
+        </Reveal>
+
         <ProjectList projects={homeProjects} />
 
         <Reveal delay={120}>

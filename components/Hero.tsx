@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { profile } from "@/data/cv";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, MediumIcon } from "@/components/icons";
 import TypewriterName from "@/components/TypewriterName";
 import ResumePreview from "@/components/ResumePreview";
 
@@ -49,8 +49,9 @@ export default function Hero() {
             </p>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
               I build web, mobile, and AI-powered products — from idea to
-              deployed product — and I&apos;m currently exploring agentic AI
-              and modern software engineering practices.
+              deployed product. I have hands-on experience building agentic
+              AI systems, including an Agentic AI internship at Arbisoft and
+              LLM-powered projects of my own.
             </p>
           </div>
         </div>
@@ -76,6 +77,15 @@ export default function Hero() {
             className="text-muted transition-colors hover:text-accent"
           >
             <LinkedinIcon width={20} height={20} />
+          </a>
+          <a
+            href={profile.medium}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Medium"
+            className="text-muted transition-colors hover:text-accent"
+          >
+            <MediumIcon width={20} height={20} />
           </a>
           <a
             href={`mailto:${profile.email}`}
