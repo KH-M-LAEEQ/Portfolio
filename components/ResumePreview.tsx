@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Download, Eye, X } from "lucide-react";
 
 export default function ResumePreview() {
@@ -50,9 +51,12 @@ export default function ResumePreview() {
         Preview CV
       </a>
 
-      {open && (
+      {/* Portal to <body> so no section's stacking context (the hero sits
+          above its neighbours) can paint over the preview. */}
+      {open &&
+        createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
           onClick={() => setOpen(false)}
         >
           <div
@@ -86,8 +90,9 @@ export default function ResumePreview() {
               className="h-full w-full flex-1 bg-surface-2"
             />
           </div>
-        </div>
-      )}
+        </div>,
+          document.body,
+        )}
     </>
   );
 }

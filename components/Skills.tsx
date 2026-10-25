@@ -17,7 +17,7 @@ export default function Skills() {
                 Skills <span className="italic text-accent">and tools</span>
               </>
             }
-            intro="Pick a skill to see the projects and roles where I've used it."
+            intro="The tools I work with day to day, grouped by area."
           />
         </Reveal>
         <Reveal delay={80}>

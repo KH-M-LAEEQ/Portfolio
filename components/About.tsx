@@ -6,14 +6,12 @@ export default function About() {
   const degree = education[0];
   const latest = experience[experience.length - 1];
 
-  // Shown as the agent's "context": the facts it starts every run with.
-  const context: [string, string][] = [
-    ["name", profile.name],
-    ["role", profile.title],
-    ["based_in", `${profile.location} · open to remote`],
-    ["studying", `${degree.degree.split(" — ")[0]} @ UCP, ${degree.period}`],
-    ["latest", `${latest.role} @ ${latest.company}`],
-    ["focus", "agentic AI · RAG · full-stack"],
+  const facts: [string, string][] = [
+    ["Role", profile.title],
+    ["Based in", `${profile.location}, open to remote`],
+    ["Studying", `BS Computer Science, UCP (${degree.period})`],
+    ["Latest", `${latest.role}, ${latest.company}`],
+    ["Focus", "Agentic AI, RAG, full-stack development"],
   ];
 
   return (
@@ -38,16 +36,13 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={140}>
-            <div className="card rounded-xl">
-              <p className="flex items-center justify-between border-b border-border px-5 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                context.json
-                <span className="text-accent">loaded</span>
-              </p>
-              <dl className="space-y-3 p-5 font-mono text-[13px]">
-                {context.map(([key, value]) => (
-                  <div key={key} className="grid grid-cols-[6.5rem_1fr] gap-3">
-                    <dt className="text-muted">{key}</dt>
-                    <dd className="text-foreground/90">{value}</dd>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">At a glance</h3>
+              <dl className="mt-4 divide-y divide-border border-y border-border">
+                {facts.map(([label, value]) => (
+                  <div key={label} className="grid grid-cols-[6.5rem_1fr] gap-4 py-3.5 text-sm">
+                    <dt className="text-muted">{label}</dt>
+                    <dd className="text-foreground">{value}</dd>
                   </div>
                 ))}
               </dl>

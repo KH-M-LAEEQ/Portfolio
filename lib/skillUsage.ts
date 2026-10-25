@@ -56,7 +56,7 @@ export function buildToolGroups(): ToolGroup[] {
     })),
     ...experience.map((e) => ({
       kind: "role" as const,
-      label: `${e.role} @ ${e.company}`,
+      label: `${e.company} internship`,
       text: `${e.role} ${e.description}`,
     })),
   ];
