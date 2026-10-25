@@ -17,7 +17,7 @@ const exploreLinks = [
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative scroll-mt-20 overflow-hidden bg-surface-2/50">
+    <footer id="contact" className="relative scroll-mt-32 lg:scroll-mt-20 overflow-hidden bg-surface-2/50">
       <div
         aria-hidden
         className="animate-blob-breathe pointer-events-none absolute left-1/2 top-0 h-[380px] w-[640px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--accent)_8%,transparent),transparent)]"

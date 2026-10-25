@@ -1,61 +1,88 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import Nav from "@/components/Nav";
 import ArticleList from "@/components/ArticleList";
-import ThemeToggle from "@/components/ThemeToggle";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { articles } from "@/data/cv";
+import {
+  PERSON_ID,
+  SITE_URL,
+  absoluteUrl,
+  baseOpenGraph,
+  baseTwitter,
+  defaultSocialImage,
+} from "@/lib/site";
 
-const PAGE_URL = "https://khawajalaeeq.me/articles";
+const PAGE_URL = absoluteUrl("/articles");
 
 export const metadata: Metadata = {
   title: "Articles",
   description:
     "Writing by Khawaja Muhammad Laeeq on agentic AI, LLM application development, and the practical engineering details of building and deploying AI agents.",
   alternates: {
-    canonical: PAGE_URL,
+    canonical: "/articles",
   },
   openGraph: {
-    type: "website",
-    url: PAGE_URL,
+    ...baseOpenGraph,
+    url: "/articles",
     title: "Articles | Khawaja Muhammad Laeeq",
     description:
       "Writing by Khawaja Muhammad Laeeq on agentic AI and LLM application development.",
+    images: [defaultSocialImage],
   },
   twitter: {
-    card: "summary_large_image",
+    ...baseTwitter,
     title: "Articles | Khawaja Muhammad Laeeq",
     description:
       "Writing by Khawaja Muhammad Laeeq on agentic AI and LLM application development.",
+    images: [defaultSocialImage],
   },
 };
 
-const breadcrumbJsonLd = {
+// Upcoming drafts have no URL yet, so only published articles are listed.
+const publishedArticles = articles.filter((article) => article.href && !article.upcoming);
+
+const articlesJsonLd = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://khawajalaeeq.me" },
-    { "@type": "ListItem", position: 2, name: "Articles", item: PAGE_URL },
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Articles", item: PAGE_URL },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      name: "Articles by Khawaja Muhammad Laeeq",
+      url: PAGE_URL,
+      numberOfItems: publishedArticles.length,
+      itemListElement: publishedArticles.map((article, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "BlogPosting",
+          headline: article.title,
+          url: article.href,
+          ...(article.description && { description: article.description }),
+          ...(article.image && { image: absoluteUrl(article.image) }),
+          ...(article.date && { datePublished: article.date }),
+          ...(article.publication && {
+            publisher: { "@type": "Organization", name: article.publication },
+          }),
+          author: { "@id": PERSON_ID },
+        },
+      })),
+    },
   ],
 };
 
 export default function ArticlesPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <JsonLd data={breadcrumbJsonLd} />
-      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link
-            href="/#articles"
-            className="flex items-center gap-1.5 font-mono text-sm font-medium text-muted transition-colors hover:text-foreground"
-          >
-            <ArrowLeft size={16} />
-            Back to portfolio
-          </Link>
-          <ThemeToggle />
-        </nav>
-      </header>
+      <JsonLd data={articlesJsonLd} />
+      <Nav />
 
       <main className="flex-1">
         <section className="border-b border-border">

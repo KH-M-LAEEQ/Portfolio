@@ -1,8 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import ChatWidget from "@/components/ChatWidget";
 import JsonLd from "@/components/JsonLd";
 import { profile } from "@/data/cv";
+import {
+  PERSON_ID,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  WEBSITE_ID,
+  absoluteUrl,
+  baseOpenGraph,
+  baseTwitter,
+} from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,12 +27,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://khawajalaeeq.me";
-const PERSON_ID = `${SITE_URL}/#person`;
-const WEBSITE_ID = `${SITE_URL}/#website`;
-
-const SITE_DESCRIPTION =
-  "Portfolio of Khawaja Muhammad Laeeq, a Computer Science student and Full-Stack & AI Developer building web, mobile, and AI-powered applications with Python, Django, React, Next.js, Flutter, and Java.";
+const SOCIAL_DESCRIPTION =
+  "Portfolio of Khawaja Muhammad Laeeq — Full-Stack & AI Developer building web, mobile, and AI-powered applications.";
 
 const personAndWebsiteJsonLd = {
   "@context": "https://schema.org",
@@ -31,8 +39,15 @@ const personAndWebsiteJsonLd = {
       name: profile.name,
       alternateName: "Khawaja Laeeq",
       url: SITE_URL,
+      image: absoluteUrl("/opengraph-image"),
       jobTitle: profile.title,
       description: profile.summary,
+      email: `mailto:${profile.email}`,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Lahore",
+        addressCountry: "PK",
+      },
       alumniOf: {
         "@type": "CollegeOrUniversity",
         name: "University of Central Punjab (UCP)",
@@ -41,6 +56,7 @@ const personAndWebsiteJsonLd = {
         "Full-Stack Development",
         "Agentic AI",
         "LLM Applications",
+        "Retrieval-Augmented Generation",
         "Python",
         "React",
         "Next.js",
@@ -55,10 +71,18 @@ const personAndWebsiteJsonLd = {
       "@type": "WebSite",
       "@id": WEBSITE_ID,
       url: SITE_URL,
-      name: profile.name,
+      name: SITE_NAME,
       description: SITE_DESCRIPTION,
+      inLanguage: "en",
       publisher: { "@id": PERSON_ID },
     },
+  ],
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f6fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
   ],
 };
 
@@ -66,46 +90,53 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Khawaja Muhammad Laeeq | Full-Stack & AI Developer",
-    template: "%s | Khawaja Muhammad Laeeq",
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
 
   description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: SITE_KEYWORDS,
+  category: "technology",
 
-  authors: [
-    {
-      name: "Khawaja Muhammad Laeeq",
-    },
-  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
 
-  creator: "Khawaja Muhammad Laeeq",
+  // Stops iOS from turning the phone number in the footer into a styled link.
+  formatDetection: {
+    telephone: false,
+  },
 
   alternates: {
-    canonical: SITE_URL,
+    canonical: "/",
   },
 
   openGraph: {
-    type: "website",
-    url: SITE_URL,
-    title: "Khawaja Muhammad Laeeq | Full-Stack & AI Developer",
-    description:
-      "Portfolio of Khawaja Muhammad Laeeq — Full-Stack & AI Developer building web, mobile, and AI-powered applications.",
-    siteName: "Khawaja Muhammad Laeeq",
-    locale: "en_US",
+    ...baseOpenGraph,
+    url: "/",
+    title: SITE_TITLE,
+    description: SOCIAL_DESCRIPTION,
     // Card image is supplied by app/opengraph-image.tsx.
   },
 
   twitter: {
-    card: "summary_large_image",
-    title: "Khawaja Muhammad Laeeq | Full-Stack & AI Developer",
-    description:
-      "Portfolio of Khawaja Muhammad Laeeq — Full-Stack & AI Developer building web, mobile, and AI-powered applications.",
+    ...baseTwitter,
+    title: SITE_TITLE,
+    description: SOCIAL_DESCRIPTION,
     // Card image is supplied by app/twitter-image.tsx.
   },
 
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 

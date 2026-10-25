@@ -11,7 +11,7 @@ export default function Projects() {
   const homeProjects = projects.filter((p) => HOME_SLUGS.includes(p.slug));
 
   return (
-    <section id="projects" className="scroll-mt-20 border-b border-border">
+    <section id="projects" className="scroll-mt-32 lg:scroll-mt-20 border-b border-border">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <Reveal>
           <SectionHeading eyebrow="What I've built" title="Projects" />

@@ -5,7 +5,7 @@ import { certifications } from "@/data/cv";
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="scroll-mt-20 border-b border-border">
+    <section id="certifications" className="scroll-mt-32 lg:scroll-mt-20 border-b border-border">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <Reveal>
           <SectionHeading eyebrow="Continuous learning" title="Certifications" />

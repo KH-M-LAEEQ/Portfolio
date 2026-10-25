@@ -5,7 +5,7 @@ import { education, experience } from "@/data/cv";
 
 export default function Experience() {
   return (
-    <section id="experience" className="scroll-mt-20 border-b border-border">
+    <section id="experience" className="scroll-mt-32 lg:scroll-mt-20 border-b border-border">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <Reveal>
           <SectionHeading eyebrow="Where I've worked & studied" title="Experience & Education" />

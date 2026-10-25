@@ -241,6 +241,52 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    title: "Data Leakage in Machine Learning: Why My Model Looked Almost Perfect",
+    href: "https://medium.com/@khawajalaeeq2/data-leakage-in-machine-learning-why-my-model-looked-almost-perfect-a38fb1144566",
+    publication: "Medium",
+    description:
+      "A reproducible Scikit-learn churn experiment where one leaked feature pushed ROC-AUC to 0.978 — how to spot data leakage and why near-perfect metrics deserve suspicion.",
+    image: "/articles/data-leakage-ml.jpg",
+  },
+  {
+    title: "Why Your AI Agent Keeps Forgetting Everything (And How RAG & Long-Term Memory Fix It)",
+    href: "https://medium.com/@khawajalaeeq2/why-your-ai-agent-keeps-forgetting-everything-and-how-rag-long-term-memory-fix-it-448c14b5e77b",
+    publication: "Medium",
+    description:
+      "Why LLMs don't remember between sessions, where RAG and vector databases fit in, and what it takes to design agent memory that actually works in production.",
+    image: "/articles/agent-memory-rag.jpg",
+  },
+  {
+    title: "Redis Caching in FastAPI: TTLs, Invalidation, and Cache Stampedes",
+    href: "https://medium.com/@khawajalaeeq2/redis-caching-in-fastapi-ttls-invalidation-and-cache-stampedes-845a10f6f057",
+    publication: "Medium",
+    description:
+      "Cache-aside design in an async FastAPI app: choosing cache keys and TTLs, handling stale data and invalidation, preventing cache stampedes, and surviving Redis failures.",
+  },
+  {
+    title: "Model Context Protocol (MCP): Why AI Agents Need More Than Tool Calling",
+    href: "https://medium.com/@khawajalaeeq2/model-context-protocol-mcp-why-ai-agents-need-more-than-tool-calling-91dac0fa984b",
+    publication: "Medium",
+    description:
+      "MCP vs. function calling, the host-client-server architecture, and why a shared protocol matters once the same integrations must work across multiple AI applications.",
+  },
+  {
+    title: "Why Your LLM Pipeline Breaks at 50 Concurrent Requests (and How to Design for It)",
+    href: "https://medium.com/@khawajalaeeq2/why-your-llm-pipeline-breaks-at-50-concurrent-requests-and-how-to-design-for-it-7f58dd979768",
+    publication: "Medium",
+    description:
+      "What concurrency does to an async FastAPI LLM backend — connection pools, rate limits, retries, and tail latency — and how to design a pipeline that behaves predictably under load.",
+    image: "/articles/llm-pipeline-concurrency.jpg",
+  },
+  {
+    title: "RAG Is a Pipeline, Not a Prompt: Building a Production-Ready Retrieval Pipeline",
+    href: "https://medium.com/@khawajalaeeq2/rag-is-a-pipeline-not-a-prompt-building-a-production-ready-retrieval-pipeline-ef2a79730289",
+    publication: "Medium",
+    description:
+      "Tracing a RAG system end to end — ingestion, chunking, embeddings, retrieval, reranking, and evaluation — and why bad answers are usually a pipeline problem, not a model problem.",
+    image: "/articles/rag-pipeline.jpg",
+  },
+  {
     title: "5 Guardrails I Add Before Any AI Agent Touches Real Data",
     href: "https://medium.com/@khawajalaeeq2/5-guardrails-i-add-before-any-ai-agent-touches-real-data-1cdc07b32896",
     publication: "Medium",
@@ -271,14 +317,6 @@ export const articles: Article[] = [
     description:
       "Why a single well-equipped agent usually beats multi-agent orchestration — the latter only pays off on broad, parallel tasks, at roughly 3.75x the token cost.",
     image: "/articles/single-vs-multi-agent.jpg",
-  },
-  {
-    title: "Short-Term vs Long-Term Memory in AI Agents: A Practical Implementation",
-    href: "https://medium.com/@khawajalaeeq2/short-term-vs-long-term-memory-in-ai-agents-a-practical-implementation-327511895227",
-    publication: "Medium",
-    description:
-      "A dual-memory architecture with PostgreSQL + pgvector — rolling-summary short-term memory plus embedding-based long-term memory — to keep prompt size constant as conversations grow.",
-    image: "/articles/short-vs-long-term-memory.jpg",
   },
 ];
 

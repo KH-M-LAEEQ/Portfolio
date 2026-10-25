@@ -1,59 +1,80 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import Nav from "@/components/Nav";
 import ProjectList from "@/components/ProjectList";
-import ThemeToggle from "@/components/ThemeToggle";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { projects } from "@/data/cv";
+import {
+  PERSON_ID,
+  SITE_URL,
+  absoluteUrl,
+  baseOpenGraph,
+  baseTwitter,
+  defaultSocialImage,
+} from "@/lib/site";
 
-const PAGE_URL = "https://khawajalaeeq.me/projects";
+const PAGE_URL = absoluteUrl("/projects");
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
     "Web, mobile, and AI-powered applications built by Khawaja Muhammad Laeeq, including GrantPilot, an AI-powered scholarship-matching platform, and a Competitive Intelligence Monitor for e-commerce tracking.",
   alternates: {
-    canonical: PAGE_URL,
+    canonical: "/projects",
   },
   openGraph: {
-    type: "website",
-    url: PAGE_URL,
+    ...baseOpenGraph,
+    url: "/projects",
     title: "Projects | Khawaja Muhammad Laeeq",
     description: "Web, mobile, and AI-powered applications built by Khawaja Muhammad Laeeq.",
+    images: [defaultSocialImage],
   },
   twitter: {
-    card: "summary_large_image",
+    ...baseTwitter,
     title: "Projects | Khawaja Muhammad Laeeq",
     description: "Web, mobile, and AI-powered applications built by Khawaja Muhammad Laeeq.",
+    images: [defaultSocialImage],
   },
 };
 
-const breadcrumbJsonLd = {
+const projectsJsonLd = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://khawajalaeeq.me" },
-    { "@type": "ListItem", position: 2, name: "Projects", item: PAGE_URL },
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Projects", item: PAGE_URL },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      name: "Projects by Khawaja Muhammad Laeeq",
+      url: PAGE_URL,
+      numberOfItems: projects.length,
+      itemListElement: projects.map((project, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "CreativeWork",
+          name: project.name,
+          description: project.description,
+          url: project.liveUrl ?? project.links[0]?.href ?? `${PAGE_URL}#${project.slug}`,
+          ...(project.image && { image: absoluteUrl(project.image) }),
+          keywords: project.tags.join(", "),
+          creator: { "@id": PERSON_ID },
+        },
+      })),
+    },
   ],
 };
 
 export default function ProjectsPage() {
   return (
     <div className="flex flex-1 flex-col">
-      <JsonLd data={breadcrumbJsonLd} />
-      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link
-            href="/#projects"
-            className="flex items-center gap-1.5 font-mono text-sm font-medium text-muted transition-colors hover:text-foreground"
-          >
-            <ArrowLeft size={16} />
-            Back to portfolio
-          </Link>
-          <ThemeToggle />
-        </nav>
-      </header>
+      <JsonLd data={projectsJsonLd} />
+      <Nav />
 
       <main className="flex-1">
         <section className="border-b border-border">

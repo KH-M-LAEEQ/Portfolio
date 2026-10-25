@@ -4,7 +4,7 @@ import { skillGroups } from "@/data/cv";
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-20 border-b border-border bg-surface-2/50">
+    <section id="skills" className="scroll-mt-32 lg:scroll-mt-20 border-b border-border bg-surface-2/50">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <Reveal>
           <SectionHeading eyebrow="What I work with" title="Skills" />

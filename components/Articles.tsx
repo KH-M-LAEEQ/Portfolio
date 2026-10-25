@@ -8,11 +8,13 @@ import { articles } from "@/data/cv";
 const HOME_COUNT = 3;
 
 export default function Articles() {
-  const homeArticles = articles.slice(0, HOME_COUNT);
-  const hasMore = articles.length > HOME_COUNT;
+  // Only articles with a cover image appear on the home page so the cards
+  // stay visually even; the rest are still listed on /articles.
+  const homeArticles = articles.filter((article) => article.image).slice(0, HOME_COUNT);
+  const hasMore = articles.length > homeArticles.length;
 
   return (
-    <section id="articles" className="scroll-mt-20 border-b border-border">
+    <section id="articles" className="scroll-mt-32 lg:scroll-mt-20 border-b border-border">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <Reveal>
           <SectionHeading eyebrow="Writing" title="Articles" />

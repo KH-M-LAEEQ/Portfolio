@@ -16,7 +16,7 @@ function initials(name: string) {
 
 export default function Hero() {
   return (
-    <section id="top" className="relative scroll-mt-20 overflow-hidden border-b border-border">
+    <section id="top" className="relative scroll-mt-32 lg:scroll-mt-20 overflow-hidden border-b border-border">
       <div
         aria-hidden
         className="animate-blob-breathe pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/3 bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--accent)_10%,transparent),transparent)]"
