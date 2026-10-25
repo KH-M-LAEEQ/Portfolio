@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import ChatWidget from "@/components/ChatWidget";
 import JsonLd from "@/components/JsonLd";
-import { profile } from "@/data/cv";
+import { certifications, education, profile } from "@/data/cv";
 import {
   PERSON_ID,
   SITE_DESCRIPTION,
@@ -27,6 +27,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Display serif for headlines.
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
 const SOCIAL_DESCRIPTION =
   "Portfolio of Khawaja Muhammad Laeeq — Full-Stack & AI Developer building web, mobile, and AI-powered applications.";
 
@@ -48,10 +56,19 @@ const personAndWebsiteJsonLd = {
         addressLocality: "Lahore",
         addressCountry: "PK",
       },
-      alumniOf: {
-        "@type": "CollegeOrUniversity",
-        name: "University of Central Punjab (UCP)",
-      },
+      alumniOf: education.map((e) => ({
+        "@type": "EducationalOrganization",
+        name: e.school,
+      })),
+      hasCredential: certifications.map((c) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: c.courseTitle ?? c.name,
+        credentialCategory: "certificate",
+        ...(c.issuer && {
+          recognizedBy: { "@type": "Organization", name: c.issuer.split(" · ")[0] },
+        }),
+        ...(c.verifyUrl && { url: c.verifyUrl }),
+      })),
       knowsAbout: [
         "Full-Stack Development",
         "Agentic AI",
@@ -81,8 +98,8 @@ const personAndWebsiteJsonLd = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f6fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f4ef" },
+    { media: "(prefers-color-scheme: dark)", color: "#121212" },
   ],
 };
 
@@ -144,7 +161,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">

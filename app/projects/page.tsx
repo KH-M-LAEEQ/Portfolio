@@ -78,8 +78,8 @@ export default function ProjectsPage() {
 
       <main className="flex-1">
         <section className="border-b border-border">
-          <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-            <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+            <nav aria-label="Breadcrumb" className="mb-10 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               <ol className="flex items-center gap-1.5">
                 <li>
                   <Link href="/" className="transition-colors hover:text-foreground">
@@ -92,13 +92,13 @@ export default function ProjectsPage() {
                 </li>
               </ol>
             </nav>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
-              Everything I&apos;ve built
+            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+              <span>Everything I&apos;ve built</span>
             </p>
-            <h1 className="mb-4 text-3xl font-semibold text-foreground md:text-4xl">
-              All Projects
+            <h1 className="mb-6 mt-4 font-display text-[clamp(3rem,8vw,5.5rem)] leading-[1] tracking-[-0.01em] text-foreground">
+              All <span className="italic text-accent">projects</span>
             </h1>
-            <p className="mb-10 max-w-2xl text-sm leading-relaxed text-foreground/70 md:text-base">
+            <p className="mb-14 max-w-2xl leading-relaxed text-foreground/70">
               The full list of what I&apos;ve built — production projects deployed for real
               users, plus coursework and personal projects where I practiced specific skills.
             </p>

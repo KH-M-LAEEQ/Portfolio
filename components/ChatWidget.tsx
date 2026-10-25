@@ -158,7 +158,7 @@ export default function ChatWidget() {
                 key={i}
                 className={`max-w-[85%] whitespace-pre-wrap rounded-xl px-3 py-2 text-sm leading-relaxed ${
                   m.role === "user"
-                    ? "ml-auto bg-accent text-white"
+                    ? "ml-auto bg-accent text-accent-ink"
                     : "bg-surface-2 text-foreground"
                 }`}
               >
@@ -208,7 +208,7 @@ export default function ChatWidget() {
               type="submit"
               disabled={isLoading || !input.trim()}
               aria-label="Send message"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40"
             >
               <Send size={15} />
             </button>
@@ -220,7 +220,7 @@ export default function ChatWidget() {
         type="button"
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? "Close chat" : "Open chat"}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-colors hover:bg-accent-hover"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-ink shadow-lg transition-colors hover:bg-accent-hover"
       >
         {isOpen ? <X size={22} /> : <MessageCircle size={22} />}
       </button>

@@ -1,22 +1,36 @@
+import type { ReactNode } from "react";
+import { getSection } from "@/lib/sections";
+
+/**
+ * Editorial section opener: a ruled line with the section number and label in
+ * small mono, then the title in the display serif.
+ */
 export default function SectionHeading({
-  eyebrow,
+  id,
   title,
+  intro,
 }: {
-  eyebrow: string;
-  title: string;
+  id: string;
+  title: ReactNode;
+  intro?: ReactNode;
 }) {
+  const section = getSection(id);
+
   return (
-    <div className="mb-10">
-      <div className="mb-2 flex items-center gap-2">
-        <span className="h-px w-6 bg-gradient-to-r from-accent to-accent-2" />
-        <p className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-          <span className="text-accent-2">{"// "}</span>
-          {eyebrow}
-        </p>
+    <div className="mb-12 md:mb-16">
+      <p className="border-t border-foreground/70 pt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+        <span className="text-accent">{section.number}</span> — {section.label}
+      </p>
+      <div className="mt-8 grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+        <h2 className="font-display text-[clamp(2.6rem,6vw,4.25rem)] leading-[1.02] tracking-[-0.01em] text-foreground">
+          {title}
+        </h2>
+        {intro && (
+          <p className="max-w-sm text-sm leading-relaxed text-muted md:pb-1.5 md:text-right">
+            {intro}
+          </p>
+        )}
       </div>
-      <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-        {title}
-      </h2>
     </div>
   );
 }

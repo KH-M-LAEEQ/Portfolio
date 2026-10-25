@@ -38,8 +38,8 @@ export default function ContactForm() {
   }
 
   const fieldClass =
-    "w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20";
-  const labelClass = "mb-1.5 block text-xs font-medium text-muted";
+    "w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20";
+  const labelClass = "mb-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-muted";
 
   return (
     <form onSubmit={handleSubmit} className="text-left">
@@ -103,7 +103,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? (
             <>

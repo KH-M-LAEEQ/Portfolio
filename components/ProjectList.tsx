@@ -4,10 +4,11 @@ import Reveal from "@/components/Reveal";
 import type { Project } from "@/data/cv";
 
 type Chunk =
-  | { type: "featured"; project: Project }
+  | { type: "featured"; project: Project; heading?: string }
   | { type: "grid"; items: Project[]; heading?: string };
 
 const GROUP_HEADINGS = {
+  featured: "Featured Project",
   selected: "Selected Projects",
   coursework: "Coursework & Learning Projects",
 } as const;
@@ -42,9 +43,9 @@ function chunkProjects(items: Project[], showGroupLabels: boolean): Chunk[] {
   const selected = rest.filter((p) => p.group !== "coursework");
   const coursework = rest.filter((p) => p.group === "coursework");
 
-  for (const project of featured) {
-    chunks.push({ type: "featured", project });
-  }
+  featured.forEach((project, i) => {
+    chunks.push({ type: "featured", project, heading: i === 0 ? GROUP_HEADINGS.featured : undefined });
+  });
   if (selected.length) {
     chunks.push({ type: "grid", items: selected, heading: GROUP_HEADINGS.selected });
   }
@@ -53,6 +54,15 @@ function chunkProjects(items: Project[], showGroupLabels: boolean): Chunk[] {
   }
 
   return chunks;
+}
+
+function GroupHeading({ children }: { children: string }) {
+  return (
+    <h2 className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+      <span aria-hidden="true" className="h-px w-8 bg-accent" />
+      {children}
+    </h2>
+  );
 }
 
 export default function ProjectList({
@@ -65,23 +75,22 @@ export default function ProjectList({
   const chunks = chunkProjects(projects, showGroupLabels);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       {chunks.map((chunk, i) =>
         chunk.type === "featured" ? (
-          <Reveal key={chunk.project.slug}>
-            <FeaturedProject project={chunk.project} />
-          </Reveal>
+          <div key={chunk.project.slug}>
+            {chunk.heading && <GroupHeading>{chunk.heading}</GroupHeading>}
+            <Reveal>
+              <FeaturedProject project={chunk.project} />
+            </Reveal>
+          </div>
         ) : (
           <div key={`grid-${i}`}>
-            {chunk.heading && (
-              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted">
-                {chunk.heading}
-              </h2>
-            )}
+            {chunk.heading && <GroupHeading>{chunk.heading}</GroupHeading>}
             <div className="grid gap-6 md:grid-cols-2">
               {chunk.items.map((project, j) => (
                 <Reveal key={project.slug} delay={Math.min(j * 60, 240)}>
-                  <ProjectCard project={project} />
+                  <ProjectCard project={project} index={j} />
                 </Reveal>
               ))}
             </div>

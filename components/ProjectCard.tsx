@@ -1,95 +1,108 @@
 import Image from "next/image";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Card from "@/components/Card";
 import type { Project } from "@/data/cv";
 
-export default function ProjectCard({ project }: { project: Project }) {
-  const isDeployed = project.status === "Completed · Deployed";
+export function ProjectStatus({ project }: { project: Project }) {
+  const isLive = project.status === "Completed · Deployed";
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.14em] ${
+        isLive ? "text-accent" : "text-muted"
+      }`}
+    >
+      <span
+        className={`h-1.5 w-1.5 rounded-full ${isLive ? "bg-accent animate-pulse-dot" : "border border-muted"}`}
+      />
+      {isLive ? "live in production" : "shipped"}
+    </span>
+  );
+}
+
+export function ProjectLinks({ project }: { project: Project }) {
+  if (!project.liveUrl && project.links.length === 0) return null;
+  return (
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+      {project.liveUrl && (
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group/link inline-flex items-center gap-1 font-semibold text-foreground transition-colors hover:text-accent"
+        >
+          Visit live site
+          <ArrowUpRight
+            size={15}
+            className="transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+          />
+        </a>
+      )}
+      {project.links.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 font-medium text-muted transition-colors hover:text-accent"
+        >
+          {link.label}
+          <ArrowUpRight size={14} />
+        </a>
+      ))}
+    </div>
+  );
+}
+
+export default function ProjectCard({ project, index }: { project: Project; index?: number }) {
   const previewUrl = project.liveUrl ?? project.links[0]?.href;
 
   return (
-    <div className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--accent)_18%,transparent)]">
+    <Card className="group flex h-full flex-col rounded-xl p-5 md:p-6">
       {project.image && (
         <a
           href={previewUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Visit ${project.name} live site`}
-          className="group/preview relative mb-4 block w-full overflow-hidden rounded-lg border border-border bg-surface-2"
+          aria-label={`Visit ${project.name}`}
+          className="relative mb-5 block w-full overflow-hidden rounded-xl border border-border bg-surface-2"
           style={{ aspectRatio: project.imageAspect ?? "16/9" }}
         >
           <Image
             src={project.image}
             alt={`${project.name} screenshot`}
             fill
-            className="object-cover object-top transition-transform duration-500 group-hover/preview:scale-[1.03]"
-            sizes="(min-width: 768px) 24rem, 100vw"
+            className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+            sizes="(min-width: 768px) 32rem, 100vw"
           />
-          <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-gradient-to-t from-black/75 to-transparent px-3 pb-3 pt-8 text-xs font-semibold text-white opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">
-            Visit live site
-            <ArrowUpRight size={13} />
-          </span>
         </a>
       )}
+
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold text-foreground">{project.name}</h3>
-        <span
-          className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-medium ${
-            isDeployed
-              ? "border-accent/30 bg-accent/5 text-accent"
-              : "border-border text-muted"
-          }`}
-        >
-          <span
-            className={`h-1.5 w-1.5 rounded-full ${
-              isDeployed ? "bg-accent" : "bg-muted"
-            }`}
-          />
-          {project.status}
-        </span>
+        <ProjectStatus project={project} />
+        {index !== undefined && (
+          <span className="font-mono text-[11px] text-muted">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        )}
       </div>
 
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-foreground/70">
+      <h3 className="font-display text-3xl leading-tight text-foreground">{project.name}</h3>
+
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/70">
         {project.description}
       </p>
 
-      <div className="mb-4 flex flex-wrap gap-2">
+      <p className="mt-5 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-muted">
         {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-md bg-surface-2 px-2 py-1 font-mono text-xs font-medium text-muted"
-          >
-            {tag}
-          </span>
+          <span key={tag}>#{tag.toLowerCase().replace(/[\s/]+/g, "-")}</span>
         ))}
-      </div>
+      </p>
 
       {(project.liveUrl || project.links.length > 0) && (
-        <div className="flex flex-wrap items-center gap-3 border-t border-border pt-4 text-sm">
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 font-medium text-white transition-colors hover:bg-accent-hover"
-            >
-              Visit Live Site
-              <ArrowUpRight size={14} />
-            </a>
-          )}
-          {project.links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 font-medium text-muted transition-colors hover:text-accent"
-            >
-              {link.label}
-              <ExternalLink size={14} />
-            </a>
-          ))}
+        <div className="mt-5 border-t border-border pt-4">
+          <ProjectLinks project={project} />
         </div>
       )}
-    </div>
+    </Card>
   );
 }

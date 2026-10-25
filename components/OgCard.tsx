@@ -22,10 +22,10 @@ export function renderOgCard() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "84px",
-          background: "#0f172a",
+          background: "#f6f4ef",
           backgroundImage:
-            "radial-gradient(1100px 560px at 8% -10%, rgba(99,102,241,0.30), transparent 60%), radial-gradient(900px 520px at 108% 118%, rgba(6,182,212,0.22), transparent 55%)",
-          color: "#f8fafc",
+            "radial-gradient(1000px 520px at 100% 0%, rgba(138,100,23,0.10), transparent 60%)",
+          color: "#1a1a1a",
           fontFamily: "sans-serif",
         }}
       >
@@ -35,7 +35,7 @@ export function renderOgCard() {
             alignItems: "center",
             gap: 16,
             fontSize: 26,
-            color: "#94a3b8",
+            color: "#69665f",
           }}
         >
           <div
@@ -44,7 +44,7 @@ export function renderOgCard() {
               width: 40,
               height: 6,
               borderRadius: 3,
-              background: "linear-gradient(90deg, #6366f1, #06b6d4)",
+              background: "#8a6417",
             }}
           />
           khawajalaeeq.me
@@ -67,7 +67,7 @@ export function renderOgCard() {
               display: "flex",
               fontSize: 42,
               fontWeight: 600,
-              color: "#a5b4fc",
+              color: "#8a6417",
               marginTop: 22,
             }}
           >
@@ -82,9 +82,9 @@ export function renderOgCard() {
               style={{
                 display: "flex",
                 fontSize: 24,
-                color: "#cbd5e1",
-                border: "1px solid #334155",
-                background: "rgba(255,255,255,0.03)",
+                color: "#1a1a1a",
+                border: "1px solid #e0dbd0",
+                background: "#ffffff",
                 padding: "10px 20px",
                 borderRadius: 10,
               }}

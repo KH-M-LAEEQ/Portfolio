@@ -13,6 +13,7 @@ import { profile } from "@/data/cv";
 const links = [
   { href: "/#about", label: "About", sectionId: "about" },
   { href: "/#experience", label: "Experience", sectionId: "experience" },
+  { href: "/#education", label: "Education", sectionId: "education" },
   { href: "/projects", label: "Projects", sectionId: "projects" },
   { href: "/articles", label: "Articles", sectionId: "articles" },
   { href: "/#skills", label: "Skills", sectionId: "skills" },
@@ -29,7 +30,7 @@ function NavLinks({ active, className }: { active: string; className: string }) 
       {links.map((link) => {
         const isActive = active === link.sectionId;
         const linkClass = `block whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-          isActive ? "bg-accent/10 text-accent" : "text-muted hover:text-foreground"
+          isActive ? "text-foreground underline decoration-accent decoration-[1.5px] underline-offset-[6px]" : "text-muted hover:text-foreground"
         }`;
         return (
           <li key={link.href}>
@@ -80,13 +81,13 @@ export default function Nav() {
   const active = isHome ? activeSection : pathname.replace(/^\//, "");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/75 backdrop-blur-xl">
       <nav aria-label="Main" className="mx-auto max-w-6xl px-6">
         <div className="flex items-center justify-between gap-4 py-4">
-          <Link href="/#top" className="flex-shrink-0 font-mono font-semibold text-foreground">
-            <span className="text-accent-2">&lt;</span>
-            Khawaja Laeeq
-            <span className="text-accent-2">/&gt;</span>
+          <Link href="/#top" className="group flex flex-shrink-0 items-center gap-2.5">
+            <span className="font-display text-2xl leading-none text-foreground">
+              Khawaja <span className="italic text-accent">Laeeq</span>
+            </span>
           </Link>
 
           <NavLinks active={active} className="hidden items-center gap-1 lg:flex" />

@@ -1,27 +1,32 @@
 @import "tailwindcss";
 
+/*
+ * "Quiet Editorial" design tokens, Graphite and ochre palette.
+ * Warm neutral paper and graphite with a single aged-gold accent.
+ * --accent-ink is the text colour that sits on top of the accent.
+ */
 :root {
-  --background: #f5f6fb;
-  --surface: #ffffff;
-  --surface-2: #eceff9;
-  --border: #dbdff0;
-  --foreground: #0a0c1a;
-  --muted: #5a6180;
-  --accent: #5b3df0;
-  --accent-hover: #4a2fd6;
-  --accent-2: #00b6d6;
+  --background: #f6f4ef;
+  --surface: #fdfcf9;
+  --surface-2: #ece9e1;
+  --border: #e0dbd0;
+  --foreground: #1a1a1a;
+  --muted: #69665f;
+  --accent: #8a6417;
+  --accent-hover: #74540f;
+  --accent-ink: #ffffff;
 }
 
 :root[data-theme="dark"] {
-  --background: #0f172a;
-  --surface: #1e293b;
-  --surface-2: #1e293b;
-  --border: #334155;
-  --foreground: #f8fafc;
-  --muted: #94a3b8;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-  --accent-2: #06b6d4;
+  --background: #121212;
+  --surface: #1a1a19;
+  --surface-2: #232321;
+  --border: #302f2c;
+  --foreground: #ece9e2;
+  --muted: #9d998f;
+  --accent: #d4ad5f;
+  --accent-hover: #e0bf78;
+  --accent-ink: #2a1d04;
 }
 
 @theme inline {
@@ -33,9 +38,14 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  --color-accent-2: var(--accent-2);
+  --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-instrument-serif);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -45,96 +55,83 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* HUD-style targeting corners, used to frame key visual elements */
-.hud-frame {
-  position: relative;
-}
-
-.hud-frame::before,
-.hud-frame::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--accent-2);
-  opacity: 0.85;
-  pointer-events: none;
-}
-
-.hud-frame::before {
-  top: -7px;
-  left: -7px;
-  border-right: none;
-  border-bottom: none;
-  border-radius: 3px 0 0 0;
-}
-
-.hud-frame::after {
-  bottom: -7px;
-  right: -7px;
-  border-left: none;
-  border-top: none;
-  border-radius: 0 0 3px 0;
-}
-
-.text-glow {
-  text-shadow: 0 0 18px color-mix(in srgb, var(--accent-2) 55%, transparent);
-}
-
 ::selection {
   background: var(--accent);
-  color: var(--background);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Quiet card: hairline border that darkens and lifts slightly on hover. */
+.card {
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card-hover:hover,
+.group:hover > .card-hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--foreground) 28%, transparent);
+  box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--foreground) 35%, transparent);
+}
+
+/* Link with an underline that draws in from the left. */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s ease;
+}
+
+.link-draw:hover {
+  background-size: 100% 1px;
+}
+
+/* Blinking terminal caret. */
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-caret {
+  animation: caret-blink 1.05s steps(1) infinite;
 }
 
 @keyframes pulse-dot {
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 40%, transparent);
   }
   50% {
-    opacity: 0.7;
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+    opacity: 0.75;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
   }
 }
 
 .animate-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes blob-breathe {
-  0%,
-  100% {
-    opacity: 0.6;
-    filter: blur(0px);
-  }
-  50% {
-    opacity: 1;
-    filter: blur(2px);
-  }
-}
-
-.animate-blob-breathe {
-  animation: blob-breathe 7s ease-in-out infinite;
-}
-
-.gradient-name {
-  background: linear-gradient(to right, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.gradient-name::selection {
-  -webkit-text-fill-color: var(--foreground);
-  color: var(--foreground);
-  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -143,7 +140,7 @@ body {
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.7s ease-out both;
+  animation: fade-in-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 @keyframes avatar-glow {
@@ -175,8 +172,16 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card {
+    transition: none;
+  }
+
+  .animate-caret,
   .animate-pulse-dot,
-  .animate-blob-breathe,
   .animate-fade-in-up,
   .animate-avatar-glow,
   .animate-waveform-bar {

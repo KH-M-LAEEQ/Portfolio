@@ -93,6 +93,7 @@ export const projects: Project[] = [
     group: "selected",
     liveUrl: "https://www.grantpilot.works",
     image: "/projects/grantpilot-opportunities.png",
+    imageAspect: "1900/867",
     description:
       "An AI-powered platform that matches students with relevant scholarships based on academic profiles and eligibility criteria. Backend services handle scholarship ingestion, filtering, recommendation, and LLM-powered opportunity discovery.",
     tags: ["AI/LLM", "Recommendation Engine", "Backend", "REST APIs"],
@@ -118,6 +119,7 @@ export const projects: Project[] = [
     group: "coursework",
     liveUrl: "https://olx-frontend-eight.vercel.app/",
     image: "/projects/olx-clone.png",
+    imageAspect: "1901/873",
     description:
       "A marketplace application with separate frontend and backend architectures. Implements authentication, product listings, search functionality, CRUD operations, REST APIs, and relational database design.",
     tags: ["Full Stack", "REST APIs", "Auth", "Relational DB"],
@@ -133,6 +135,7 @@ export const projects: Project[] = [
     group: "selected",
     liveUrl: "https://competitive-intelligence-monitor.vercel.app/",
     image: "/projects/competitive-intelligence-dashboard.png",
+    imageAspect: "1917/868",
     description:
       "An agentic-AI-driven web app for e-commerce competitor tracking. Monitors competitor websites, surfaces comparisons and new activity, and gives AI-powered suggestions for improving your own store.",
     tags: ["FastAPI", "Next.js", "Agentic AI", "Web Scraping"],

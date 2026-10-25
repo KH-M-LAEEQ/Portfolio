@@ -44,7 +44,7 @@ export default function ResumePreview() {
           event.preventDefault();
           setOpen(true);
         }}
-        className="flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+        className="link-draw flex items-center gap-2 pb-0.5 text-sm font-medium text-foreground"
       >
         <Eye size={16} />
         Preview CV
@@ -65,7 +65,7 @@ export default function ResumePreview() {
                 <a
                   href="/resume.pdf"
                   download
-                  className="flex items-center gap-2 rounded-md bg-accent px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-accent-hover"
+                  className="flex items-center gap-2 rounded-md bg-accent px-3 py-1.5 text-xs font-semibold text-accent-ink shadow-sm transition-colors hover:bg-accent-hover"
                 >
                   <Download size={14} />
                   Download

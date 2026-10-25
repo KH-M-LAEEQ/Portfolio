@@ -1,119 +1,114 @@
-import { Mail } from "lucide-react";
-import { profile } from "@/data/cv";
+import { ArrowRight, Mail } from "lucide-react";
+import { articles, experience, profile, projects } from "@/data/cv";
 import { GithubIcon, LinkedinIcon, MediumIcon } from "@/components/icons";
-import TypewriterName from "@/components/TypewriterName";
+import AgentConsole, { type ConsoleLine } from "@/components/AgentConsole";
+import AgentCore from "@/components/AgentCore";
 import ResumePreview from "@/components/ResumePreview";
 
-function initials(name: string) {
-  return name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
-}
-
 export default function Hero() {
+  const liveCount = projects.filter((p) => p.status === "Completed · Deployed").length;
+  const publishedCount = articles.filter((a) => a.href && !a.upcoming).length;
+
+  // The console narrates a real "run" built from the CV data.
+  const lines: ConsoleLine[] = [
+    { key: "goal", value: "ship AI agents that are reliable, not just impressive" },
+    {
+      key: "memory",
+      value: experience.map((e) => `${e.role.replace(/ \(.*\)/, "")} @ ${e.company}`).join(" · "),
+    },
+    {
+      key: "tool",
+      value: `projects.search() → ${projects.length} built, ${liveCount} live in production`,
+    },
+    {
+      key: "tool",
+      value: `medium.read() → ${publishedCount} articles on agents, RAG & LLM systems`,
+    },
+    { key: "stack", value: "Next.js · Django · FastAPI · RAG · MCP · Flutter" },
+    { key: "answer", value: "Open to roles & collaborations." },
+  ];
+
+  const socials = [
+    { label: "GitHub", href: profile.github, icon: <GithubIcon width={16} height={16} /> },
+    { label: "LinkedIn", href: profile.linkedin, icon: <LinkedinIcon width={16} height={16} /> },
+    { label: "Medium", href: profile.medium, icon: <MediumIcon width={16} height={16} /> },
+    { label: "Email", href: `mailto:${profile.email}`, icon: <Mail size={16} /> },
+  ];
+
   return (
-    <section id="top" className="relative scroll-mt-32 lg:scroll-mt-20 overflow-hidden border-b border-border">
-      <div
-        aria-hidden
-        className="animate-blob-breathe pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/3 bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--accent)_10%,transparent),transparent)]"
-      />
-      <div
-        aria-hidden
-        className="animate-blob-breathe pointer-events-none absolute right-0 top-1/3 h-[320px] w-[480px] translate-x-1/3 bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--accent-2)_10%,transparent),transparent)]"
-        style={{ animationDelay: "2s" }}
-      />
-      <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs font-medium text-accent">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
-          Available for work
-        </div>
+    <section id="top" className="relative scroll-mt-32 border-b border-border lg:scroll-mt-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-16 md:pt-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6 lg:pb-24 lg:pt-20">
+        <div className="relative z-10 min-w-0">
+          <p className="animate-fade-in-up flex items-center gap-2.5 text-sm text-muted">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
+            Available for new work · Lahore &amp; remote
+          </p>
 
-        <div
-          className="animate-fade-in-up flex flex-col items-start gap-8 md:flex-row md:items-center"
-          style={{ animationDelay: "120ms" }}
-        >
-          <div className="hud-frame flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-accent-2 text-3xl font-bold text-white shadow-lg shadow-accent/20 md:h-28 md:w-28 md:text-4xl">
-            {initials(profile.name)}
+          <h1
+            className="animate-fade-in-up mt-8 font-display text-[clamp(3.4rem,9.5vw,7.25rem)] leading-[0.95] tracking-[-0.02em] text-foreground"
+            style={{ animationDelay: "80ms" }}
+          >
+            <span className="block">Khawaja</span>{" "}
+            <span className="block">Muhammad</span>{" "}
+            <span className="block italic text-accent">Laeeq</span>
+          </h1>
+
+          <p
+            className="animate-fade-in-up mt-8 max-w-xl text-lg leading-relaxed text-foreground/75"
+            style={{ animationDelay: "160ms" }}
+          >
+            {profile.title}. I build web, mobile, and AI products end to end, with a focus on
+            agentic systems that plan, use tools, remember, and still behave when they touch
+            real data.
+          </p>
+
+          <div
+            className="animate-fade-in-up mt-10 flex flex-wrap items-center gap-x-7 gap-y-4"
+            style={{ animationDelay: "240ms" }}
+          >
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-ink transition-colors hover:bg-accent-hover"
+            >
+              See selected work
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+            </a>
+            <ResumePreview />
           </div>
 
-          <div>
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-              <TypewriterName text={profile.name} />
-            </h1>
-            <p className="mt-3 text-lg font-medium text-accent md:text-xl">
-              {profile.title}
-            </p>
-            <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              I build web, mobile, and AI-powered products — from idea to
-              deployed product. I have hands-on experience building agentic
-              AI systems, including an Agentic AI internship at Arbisoft and
-              LLM-powered projects of my own.
-            </p>
+          <ul
+            className="animate-fade-in-up mt-12 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted"
+            style={{ animationDelay: "320ms" }}
+          >
+            {socials.map((s) => (
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="group inline-flex items-center gap-2 transition-colors hover:text-foreground"
+                >
+                  <span className="text-foreground/70 transition-colors group-hover:text-accent">{s.icon}</span>
+                  <span className="link-draw pb-0.5">{s.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* The sphere, with the console resting just below it. */}
+        <div className="relative min-w-0 lg:h-[640px]">
+          <p className="absolute right-0 top-0 z-10 font-display text-sm italic text-muted lg:top-6">
+            Fig. 1 — an agent, mid-thought
+          </p>
+          <div className="relative -mx-6 h-[340px] sm:h-[420px] lg:absolute lg:-inset-x-8 lg:inset-y-0 lg:mx-0 lg:h-auto">
+            <AgentCore />
           </div>
-        </div>
-
-        <div
-          className="animate-fade-in-up mt-8 flex items-center gap-5"
-          style={{ animationDelay: "260ms" }}
-        >
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="text-muted transition-colors hover:text-accent"
+          <div
+            className="animate-fade-in-up relative z-10 -mt-12 sm:-mt-16 lg:absolute lg:bottom-4 lg:left-0 lg:right-6 lg:mt-0"
+            style={{ animationDelay: "300ms" }}
           >
-            <GithubIcon width={20} height={20} />
-          </a>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="text-muted transition-colors hover:text-accent"
-          >
-            <LinkedinIcon width={20} height={20} />
-          </a>
-          <a
-            href={profile.medium}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Medium"
-            className="text-muted transition-colors hover:text-accent"
-          >
-            <MediumIcon width={20} height={20} />
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            aria-label="Email"
-            className="text-muted transition-colors hover:text-accent"
-          >
-            <Mail size={20} />
-          </a>
-        </div>
-
-        <div
-          className="animate-fade-in-up mt-8 flex flex-wrap gap-4"
-          style={{ animationDelay: "380ms" }}
-        >
-          <a
-            href="#projects"
-            className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-md"
-          >
-            View Projects
-          </a>
-          <ResumePreview />
-          <a
-            href="#contact"
-            className="flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-          >
-            <Mail size={16} />
-            Contact
-          </a>
+            <AgentConsole lines={lines} />
+          </div>
         </div>
       </div>
     </section>
