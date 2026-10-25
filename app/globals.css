@@ -96,6 +96,21 @@ body {
   background-size: 100% 1px;
 }
 
+/* Endless horizontal drift (tech strip). Content is duplicated, so -50% loops. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.marquee:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 /* Blinking terminal caret. */
 @keyframes caret-blink {
   0%,
@@ -180,6 +195,7 @@ body {
     transition: none;
   }
 
+  .animate-marquee,
   .animate-caret,
   .animate-pulse-dot,
   .animate-fade-in-up,
