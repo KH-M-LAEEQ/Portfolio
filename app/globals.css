@@ -158,6 +158,54 @@ body {
   animation: fade-in-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+@keyframes spin-slow-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 30s linear infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-10px, 12px) scale(1.08);
+  }
+}
+
+.animate-drift {
+  animation: drift 9s ease-in-out infinite;
+}
+
+@keyframes drift-reverse {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(10px, -10px) scale(1.1);
+  }
+}
+
+.animate-drift-reverse {
+  animation: drift-reverse 11s ease-in-out infinite;
+}
+
 @keyframes avatar-glow {
   0%,
   100% {
@@ -200,7 +248,11 @@ body {
   .animate-pulse-dot,
   .animate-fade-in-up,
   .animate-avatar-glow,
-  .animate-waveform-bar {
+  .animate-waveform-bar,
+  .animate-spin-slow,
+  .animate-spin-slow-reverse,
+  .animate-drift,
+  .animate-drift-reverse {
     animation: none;
   }
 }
