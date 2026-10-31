@@ -4,12 +4,12 @@ export const profile = {
   location: "Lahore, Pakistan",
   phone: "+92 334 8167493",
   email: "khawajalaeeq2@gmail.com",
-  github: "https://github.com/KH-M-LAEEQ",
-  githubHandle: "github.com/KH-M-LAEEQ",
+  github: "https://github.com/khawaja-laeeq",
+  githubHandle: "github.com/khawaja-laeeq",
   linkedin: "https://www.linkedin.com/in/khawaja-laeeq",
   linkedinHandle: "linkedin.com/in/khawaja-laeeq",
-  medium: "https://medium.com/@khawajalaeeq2",
-  mediumHandle: "medium.com/@khawajalaeeq2",
+  medium: "https://medium.com/@khawaja-laeeq",
+  mediumHandle: "medium.com/@khawaja-laeeq",
   summary:
     "Agentic AI and Full-Stack Developer with hands-on experience across web, mobile, databases, and cloud infrastructure. I've worked as an Agentic AI Intern at Arbisoft, building full-stack applications and integrating LLMs into agentic workflows, and as an ML Intern at Arch Technologies, working on NLP, embeddings, and RAG pipelines. I bring that practical AI/LLM experience into my own projects — from LLM-powered recommendation systems to agentic tools that monitor competitor activity and surface insights.",
 };
