@@ -97,7 +97,7 @@ export const projects: Project[] = [
     description:
       "An AI-powered platform that matches students with relevant scholarships based on academic profiles and eligibility criteria. Backend services handle scholarship ingestion, filtering, recommendation, and LLM-powered opportunity discovery.",
     tags: ["AI/LLM", "Recommendation Engine", "Backend", "REST APIs"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/GrantPilot" }],
+    links: [{ label: "GitHub", href: "https://github.com/khawaja-laeeq/GrantPilot" }],
   },
   {
     slug: "khawaja-law",
@@ -124,8 +124,8 @@ export const projects: Project[] = [
       "A marketplace application with separate frontend and backend architectures. Implements authentication, product listings, search functionality, CRUD operations, REST APIs, and relational database design.",
     tags: ["Full Stack", "REST APIs", "Auth", "Relational DB"],
     links: [
-      { label: "Frontend", href: "https://github.com/KH-M-LAEEQ/olx-Frontend" },
-      { label: "Backend", href: "https://github.com/KH-M-LAEEQ/olx-backend" },
+      { label: "Frontend", href: "https://github.com/khawaja-laeeq/olx-Frontend" },
+      { label: "Backend", href: "https://github.com/khawaja-laeeq/olx-backend" },
     ],
   },
   {
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/KH-M-LAEEQ/Competitive_Intelligence_Monitor",
+        href: "https://github.com/khawaja-laeeq/Competitive_Intelligence_Monitor",
       },
     ],
   },
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     description:
       "A personalized fitness tracker built with Dart and Flutter, using Firebase as the backend service. Primarily a mobile app; the live demo is a web build of the same codebase.",
     tags: ["Flutter", "Dart", "Firebase", "Mobile"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fitness-App" }],
+    links: [{ label: "GitHub", href: "https://github.com/khawaja-laeeq/Fitness-App" }],
   },
   {
     slug: "pakwheels-clone",
@@ -167,7 +167,7 @@ export const projects: Project[] = [
     description:
       "A Flutter application featuring vehicle listings, search filters, and detailed vehicle views. Designed the UI/UX from Figma wireframes, then built out responsive layouts and navigation, category browsing, and a detail view with image galleries and seller info.",
     tags: ["Flutter", "Dart", "Figma", "Mobile"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/PakWheels" }],
+    links: [{ label: "GitHub", href: "https://github.com/khawaja-laeeq/PakWheels" }],
   },
   {
     slug: "fake-news-detector",
@@ -177,7 +177,7 @@ export const projects: Project[] = [
     description:
       "A fake news detection tool built with Python and Flutter, using K-Means clustering and KNN. Paste in a news article and the model classifies it as fake or real.",
     tags: ["Python", "Flutter", "K-Means", "KNN", "ML"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/Fake-News-Detctor" }],
+    links: [{ label: "GitHub", href: "https://github.com/khawaja-laeeq/Fake-News-Detctor" }],
   },
   {
     slug: "instagram-clone",
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     description:
       "A social media application with authentication, posts, image uploads, and real-time feeds using Firebase Authentication, Firestore, and Storage.",
     tags: ["Firebase", "Firestore", "Auth", "Real-time"],
-    links: [{ label: "GitHub", href: "https://github.com/KH-M-LAEEQ/insta" }],
+    links: [{ label: "GitHub", href: "https://github.com/khawaja-laeeq/insta" }],
   },
   {
     slug: "aws-vpn",
@@ -245,7 +245,7 @@ export type Article = {
 export const articles: Article[] = [
   {
     title: "Data Leakage in Machine Learning: Why My Model Looked Almost Perfect",
-    href: "https://medium.com/@khawajalaeeq2/data-leakage-in-machine-learning-why-my-model-looked-almost-perfect-a38fb1144566",
+    href: "https://medium.com/@khawaja-laeeq/data-leakage-in-machine-learning-why-my-model-looked-almost-perfect-a38fb1144566",
     publication: "Medium",
     description:
       "A reproducible Scikit-learn churn experiment where one leaked feature pushed ROC-AUC to 0.978 — how to spot data leakage and why near-perfect metrics deserve suspicion.",
@@ -253,7 +253,7 @@ export const articles: Article[] = [
   },
   {
     title: "Why Your AI Agent Keeps Forgetting Everything (And How RAG & Long-Term Memory Fix It)",
-    href: "https://medium.com/@khawajalaeeq2/why-your-ai-agent-keeps-forgetting-everything-and-how-rag-long-term-memory-fix-it-448c14b5e77b",
+    href: "https://medium.com/@khawaja-laeeq/why-your-ai-agent-keeps-forgetting-everything-and-how-rag-long-term-memory-fix-it-448c14b5e77b",
     publication: "Medium",
     description:
       "Why LLMs don't remember between sessions, where RAG and vector databases fit in, and what it takes to design agent memory that actually works in production.",
@@ -261,21 +261,21 @@ export const articles: Article[] = [
   },
   {
     title: "Redis Caching in FastAPI: TTLs, Invalidation, and Cache Stampedes",
-    href: "https://medium.com/@khawajalaeeq2/redis-caching-in-fastapi-ttls-invalidation-and-cache-stampedes-845a10f6f057",
+    href: "https://medium.com/@khawaja-laeeq/redis-caching-in-fastapi-ttls-invalidation-and-cache-stampedes-845a10f6f057",
     publication: "Medium",
     description:
       "Cache-aside design in an async FastAPI app: choosing cache keys and TTLs, handling stale data and invalidation, preventing cache stampedes, and surviving Redis failures.",
   },
   {
     title: "Model Context Protocol (MCP): Why AI Agents Need More Than Tool Calling",
-    href: "https://medium.com/@khawajalaeeq2/model-context-protocol-mcp-why-ai-agents-need-more-than-tool-calling-91dac0fa984b",
+    href: "https://medium.com/@khawaja-laeeq/model-context-protocol-mcp-why-ai-agents-need-more-than-tool-calling-91dac0fa984b",
     publication: "Medium",
     description:
       "MCP vs. function calling, the host-client-server architecture, and why a shared protocol matters once the same integrations must work across multiple AI applications.",
   },
   {
     title: "Why Your LLM Pipeline Breaks at 50 Concurrent Requests (and How to Design for It)",
-    href: "https://medium.com/@khawajalaeeq2/why-your-llm-pipeline-breaks-at-50-concurrent-requests-and-how-to-design-for-it-7f58dd979768",
+    href: "https://medium.com/@khawaja-laeeq/why-your-llm-pipeline-breaks-at-50-concurrent-requests-and-how-to-design-for-it-7f58dd979768",
     publication: "Medium",
     description:
       "What concurrency does to an async FastAPI LLM backend — connection pools, rate limits, retries, and tail latency — and how to design a pipeline that behaves predictably under load.",
@@ -283,7 +283,7 @@ export const articles: Article[] = [
   },
   {
     title: "RAG Is a Pipeline, Not a Prompt: Building a Production-Ready Retrieval Pipeline",
-    href: "https://medium.com/@khawajalaeeq2/rag-is-a-pipeline-not-a-prompt-building-a-production-ready-retrieval-pipeline-ef2a79730289",
+    href: "https://medium.com/@khawaja-laeeq/rag-is-a-pipeline-not-a-prompt-building-a-production-ready-retrieval-pipeline-ef2a79730289",
     publication: "Medium",
     description:
       "Tracing a RAG system end to end — ingestion, chunking, embeddings, retrieval, reranking, and evaluation — and why bad answers are usually a pipeline problem, not a model problem.",
@@ -291,7 +291,7 @@ export const articles: Article[] = [
   },
   {
     title: "5 Guardrails I Add Before Any AI Agent Touches Real Data",
-    href: "https://medium.com/@khawajalaeeq2/5-guardrails-i-add-before-any-ai-agent-touches-real-data-1cdc07b32896",
+    href: "https://medium.com/@khawaja-laeeq/5-guardrails-i-add-before-any-ai-agent-touches-real-data-1cdc07b32896",
     publication: "Medium",
     description:
       "Five infrastructure-level safety layers for agents with real-world access: scoped tool permissions, allow-listed destinations, data-loss prevention, human approval gates, and full action logging.",
@@ -299,7 +299,7 @@ export const articles: Article[] = [
   },
   {
     title: "From Prototype to Production: Lessons from Deploying My First Agent",
-    href: "https://medium.com/@khawajalaeeq2/from-prototype-to-production-lessons-from-deploying-my-first-agent-3a2d6ce99b58",
+    href: "https://medium.com/@khawaja-laeeq/from-prototype-to-production-lessons-from-deploying-my-first-agent-3a2d6ce99b58",
     publication: "Medium",
     description:
       "What it actually takes to ship an agent to production: background workers, Docker, env-based config, timeouts/retries on external calls, and full execution-trace logging.",
@@ -307,7 +307,7 @@ export const articles: Article[] = [
   },
   {
     title: "Streaming Agent Responses to a React/Next.js UI in Real Time",
-    href: "https://medium.com/@khawajalaeeq2/streaming-agent-responses-to-a-react-next-js-ui-in-real-time-77b782bec8ae",
+    href: "https://medium.com/@khawaja-laeeq/streaming-agent-responses-to-a-react-next-js-ui-in-real-time-77b782bec8ae",
     publication: "Medium",
     description:
       "Streaming an agent's progress — text, tool status, completion — to a React UI in real time using Server-Sent Events and a FastAPI backend.",
@@ -315,7 +315,7 @@ export const articles: Article[] = [
   },
   {
     title: "Single-Agent vs Multi-Agent Systems: When Do You Actually Need More Than One?",
-    href: "https://medium.com/@khawajalaeeq2/single-agent-vs-multi-agent-systems-when-do-you-actually-need-more-than-one-9d011d28671b",
+    href: "https://medium.com/@khawaja-laeeq/single-agent-vs-multi-agent-systems-when-do-you-actually-need-more-than-one-9d011d28671b",
     publication: "Medium",
     description:
       "Why a single well-equipped agent usually beats multi-agent orchestration — the latter only pays off on broad, parallel tasks, at roughly 3.75x the token cost.",
